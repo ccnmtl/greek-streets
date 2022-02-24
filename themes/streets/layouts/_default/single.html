@@ -4,6 +4,8 @@
 <body itemscope itemtype="http://schema.org/BlogPosting">
 {{ partial "header.html" . }}
     <main class="container" id="maincontent">
+        {{ partial "breadcrumbs.html" . }}
+
         <article class="row entry-body">
             <header class="col-lg-10 offset-lg-1 entry-header">
                 {{ if .Params.poster }}
@@ -25,17 +27,8 @@
                 <h1 class="entry-title" itemprop="headline">
                     {{ .Title }}
                 </h1>
-                <p class="post-byline" itemprop="author" itemscope itemtype="http://schema.org/Person">By
-                {{ range $i, $e := .Params.authors }}{{if $i}}, {{end}}<a href='{{ "/authors/" | relLangURL }}{{ . | urlize }}' itemprop="url"><span itemprop="name">{{ (index $.Site.Data.authors $e).name }}</span></a>{{ end }}
-                |
-                <time itemprop="datePublished" datetime='{{ .Date.Format "2006-01-02"  }}' class="post-datepublished">{{ .Date.Format "Jan 2, 2006" }}</time>
-                </p>
-                {{ if .Params.tags }}<p class="post-tags"><strong>Tags:</strong>
-                {{ range $i, $e := .Params.tags }}{{if $i}}, {{end}}
-                <a href="{{ "/tags/" | relLangURL }}{{ . | urlize | lower }}" rel="tag"><span itemprop="keywords">{{$e}}</span></a>{{ end }}
-                </p>{{ end }}
+
                 <div class="d-flex socmedia-share d-print-none">
-                    <h2>Share<span class="sr-only"> this post</span>:</h2>
                     <ul class="nav d-print-none">
                         <li class="nav-item">
                         <a rel="nofollow noopener noreferrer" class="nav-link" target="_blank" href="http://www.facebook.com/share.php?u={{ .Permalink }}&title={{ .Title }}"><i class="fab fa-facebook-f" aria-label="Share on Facebook"></i></a>
@@ -56,18 +49,9 @@
             <div class="entry-content">
             {{ .Content }}
             </div>
-            <div class="bookend">
-            <span class="sr-only">End of this article.</span>
-            <i class="fas fa-lg fa-ellipsis-h" aria-hidden="true"></i>
-            <i class="fas fa-2x fa-
-            {{- if .Params.bookendanimal -}}
-                {{- .Params.bookendanimal -}}
-            {{- else -}}
-                cat
-            {{- end -}}
-            " aria-hidden="true"></i>
-            <i class="fas fa-lg fa-ellipsis-h" aria-hidden="true"></i>
-            </div>
+            <h5>A-Frame:</h5>
+            <iframe width="300px" height="300px">
+            </iframe>
             <p class="d-none d-print-block article-url-print">Printed from: {{ .Permalink }}</p>
             </div>
         </article>
