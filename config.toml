@@ -3,3 +3,12 @@ copyright = "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Internati
 languageCode = "en-us"
 metaDataFormat = "yaml"
 title = "Hellenic Streets"
+
+[taxonomies]
+  # default taxonomies
+  category = 'categories'
+  tag = 'tags'
+
+  # custom taxonomies
+  street = 'streets'
+  neighborhood = 'neighborhoods'

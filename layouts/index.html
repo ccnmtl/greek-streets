@@ -27,6 +27,8 @@
                 sem blandit elit pulvinar posuere.
             </p>
 
+            {{ ref . "/streets/stadiou" }}
+
             <section class="latest-post" aria-labelledby="sectionlatest">
                 <article itemscope itemtype="http://http://schema.org/BlogPosting">
                     {{ range first 1 ( where .Site.Pages "Type" "post" ) }}
