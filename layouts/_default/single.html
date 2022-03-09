@@ -49,9 +49,10 @@
             <div class="entry-content">
             {{ .Content }}
             </div>
+
             <h5>A-Frame:</h5>
-            <iframe width="300px" height="300px">
-            </iframe>
+            {{ partial "aframe.html" . }}
+
             <p class="d-none d-print-block article-url-print">Printed from: {{ .Permalink }}</p>
             </div>
         </article>
