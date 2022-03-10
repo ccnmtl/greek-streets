@@ -27,12 +27,12 @@
 </script>
 
 <div class="container">
-<a-scene
-    background="color: #212"
-    video="activeVideo: null"
-    cursor="rayOrigin: mouse" raycaster="objects: .raycastable"
-    device-orientation-permission-ui="enabled: false"
-    info-message="htmlSrc: #messageText">
+    <a-scene
+        video="activeVideo: videoTravel"
+        cursor="rayOrigin: mouse"
+        raycaster="objects: .raycastable"
+        device-orientation-permission-ui="enabled: false">
+
     <a-assets>
         <a-asset-item id="messageText" src="/message.html"></a-asset-item>
         <!--
@@ -145,7 +145,7 @@
     </a-entity>
 
     <a-videosphere
-        video="src: videoTravel; active: false"
+        video="src: videoTravel; active: true"
         id="videoTravel-sphere"
         src="#videoTravel"></a-videosphere>
 
