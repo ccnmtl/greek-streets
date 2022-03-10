@@ -1,2 +1,5 @@
 public/
 assets/
+static/*.webm
+static/*.mov
+static/*.mp4
