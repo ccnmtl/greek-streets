@@ -1,12 +1,12 @@
 ---
-title: "Aerides"
+title: "Kolonaki [Κολωνάκι]"
 streets:
 - Aiolou
 date: 2022-02-24T15:22:10-05:00
 draft: false
 ---
 
-Welcome to the neighborhood of Aerides!
+Welcome to the neighborhood of Kolonaki!
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
 facilisis lacus aliquet, tristique quam in, tristique ex. Nullam
