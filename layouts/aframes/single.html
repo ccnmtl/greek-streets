@@ -34,7 +34,7 @@
     <a-scene
         video="activeVideo: videoTravel"
         cursor="rayOrigin: mouse"
-        raycaster="objects: .raycastable"
+        raycaster="objects: [data-raycastable]"
         device-orientation-permission-ui="enabled: false">
 
     <a-assets>
@@ -79,12 +79,12 @@
         ></a-mixin>
 
         <video id="videoTravel" preload="auto"
-               src="/athens1.mp4"
+               src="https://d2b5j58ir6uajk.cloudfront.net/34_FILES_360_ATHENS_EXARCHIA/2+ANDREA+METAXA+ST/360+VIDEO/20+Andrea+Metaxa+ST+-+2+Andrea+Metaxa+ST.360.mp4"
                width="160" height="90" loop="false"
                crossOrigin="anonymous"></video>
 
         <video id="videoLocation" preload="auto"
-               src="/athens2.mp4"
+               src="https://d2b5j58ir6uajk.cloudfront.net/34_FILES_360_ATHENS_EXARCHIA/2+ANDREA+METAXA+ST/360+VIDEO/2+Andrea+Metaxa+ST.360.mp4"
                width="160" height="90" loop="true"
                crossOrigin="anonymous"></video>
     </a-assets>
@@ -95,7 +95,8 @@
         geometry="primitive: sphere; radius: 2.0"
         material="color: red; side: back; shader: flat"
         scale="0.001 0.001 0.001"
-        visible="false" class="raycastable">
+        visible="false"
+        data-raycastable="" class="raycastable">
     </a-entity>
 
     <a-entity
@@ -109,20 +110,20 @@
     </a-entity>
 
     <!-- Hand controls -->
-    <a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: #118A7E"></a-entity>
+    <a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: [data-raycastable]" line="color: #118A7E"></a-entity>
 
     <a-entity id="ui" position="0 1.6 -2.5">
         <!-- Poster menu -->
         <a-entity id="menu" highlight>
-            <a-entity id="karigurashiButton" position="-0.8 0 0" mixin="frame" class="raycastable menu-button">
+            <a-entity id="karigurashiButton" position="-0.8 0 0" mixin="frame" class="raycastable menu-button" data-raycastable="">
                 <a-entity material="src: #karigurashiPoster;" mixin="poster"></a-entity>
             </a-entity>
 
-            <a-entity id="kazetachinuButton" position="0 0 0" mixin="frame" class="raycastable menu-button">
+            <a-entity id="kazetachinuButton" position="0 0 0" mixin="frame" class="raycastable menu-button" data-raycastable="">
                 <a-entity material="src: #loca1Poster" mixin="poster"></a-entity>
             </a-entity>
 
-            <a-entity id="ponyoButton" position="0.8 0 0" mixin="frame" class="raycastable menu-button">
+            <a-entity id="ponyoButton" position="0.8 0 0" mixin="frame" class="raycastable menu-button" data-raycastable="">
                 <a-entity material="src: #ponyoPoster" mixin="poster"></a-entity>
             </a-entity>
         </a-entity>
@@ -135,7 +136,7 @@
             visible="false"
             scale="0.001 0.001 0.001"
             geometry="primitive: plane; width: 1.5; height: 1.8"
-            material="color: #333333; shader: flat; transparent: false" class="raycastable">
+            material="color: #333333; shader: flat; transparent: false" class="raycastable" data-raycastable="">
             <a-entity id="ponyoMovieImage" mixin="movieImage" material="src: #ponyo" visible="false"></a-entity>
             <a-entity id="kazetachinuMovieImage" mixin="movieImage" material="src: #kazetachinu" visible="false"></a-entity>
             <a-entity id="karigurashiMovieImage" mixin="movieImage" material="src: #karigurashi" visible="false"></a-entity>
@@ -159,6 +160,7 @@
         src="#videoLocation"></a-videosphere>
 
     <a-box class="raycastable hidden"
+           data-raycastable=""
            position="-4 0.5 0"
            rotation="0 0 0"
            visible="true"
@@ -171,6 +173,7 @@
     </a-box>
 
     <a-box class="raycastable hidden"
+           data-raycastable=""
            position="4 5.5 0"
            rotation="0 0 0"
            visible="true"
