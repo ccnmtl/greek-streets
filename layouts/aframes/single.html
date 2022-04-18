@@ -79,12 +79,12 @@
         ></a-mixin>
 
         <video id="videoTravel" preload="auto"
-               src="https://d2b5j58ir6uajk.cloudfront.net/34_FILES_360_ATHENS_EXARCHIA/2+ANDREA+METAXA+ST/360+VIDEO/travel.mp4"
+               src="{{ .Params.vidSrc }}"               
                width="160" height="90" loop="false"
                crossOrigin="anonymous"></video>
 
         <video id="videoLocation" preload="auto"
-               src="https://d2b5j58ir6uajk.cloudfront.net/34_FILES_360_ATHENS_EXARCHIA/2+ANDREA+METAXA+ST/360+VIDEO/location.mp4"
+               src="{{ .Params.vidSrc }}"
                width="160" height="90" loop="true"
                crossOrigin="anonymous"></video>
     </a-assets>
