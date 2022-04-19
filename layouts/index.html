@@ -6,9 +6,11 @@
 
         <main class="container" id="maincontent" aria-label="List of latest and recent articles">
 
+            Welcome to Greek Streets!
+
             <section class="latest-post" aria-labelledby="sectionlatest">
                 <article itemscope itemtype="http://http://schema.org/BlogPosting">
-                    {{ range first 1 ( where .Site.Pages "Type" "post" ) }}
+                    {{ range first 1 ( where .Site.Pages "Type" "street" ) }}
                     <div class="row">
                         <div class="col-lg-7">
                             <figure aria-hidden="true">
@@ -16,11 +18,8 @@
                             </figure>
                         </div>
                         <div class="col-lg-5">
-                            <h2 id="sectionlatest">Latest article</h2>
-                            <h3 id="{{ .UniqueID }}"><a href="{{ .URL }}" itemprop="url"><span itemprop="headline">{{ .Title }}</span></a></h3>
-                            <p class="post-byline" itemprop="author" itemscope itemtype="http://schema.org/Person">By
-                                {{ range $i, $e := .Params.authors }}{{if $i}}, {{end}}<a href='{{ "/authors/" | relLangURL }}{{ . | urlize }}' itemprop="url"><span itemprop="name">{{ (index $.Site.Data.authors $e).name }}</span></a>{{ end }}
-                            </p>
+                            <h2 id="sectionlatest">Latest street</h2>
+                            <h3 id="{{ .File.UniqueID }}"><a href="{{ .Permalink }}" itemprop="url"><span itemprop="headline">{{ .Title }}</span></a></h3>
                             <time itemprop="datePublished" datetime='{{ .Date.Format "2006-01-02"  }}' class="post-datepublished">{{ .Date.Format "Jan 2, 2006" }}</time>
                             <p>{{ if .Params.shortlede }}
                                 {{ .Params.shortlede }}
@@ -33,7 +32,7 @@
                                 {{ range $i, $e := .Params.tags }}{{if $i}}, {{end}}
                                 <a href="{{ "/tags/" | relLangURL }}{{ . | urlize | lower }}" rel="tag"><span itemprop="keywords">{{$e}}</span></a>{{ end }}
                             </p>{{ end }}
-                            <a href='{{ .URL }}' class="read-prompt" aria-labelledby="{{ .UniqueID }}">Read article <i class="fas fa-chevron-circle-right ml-2" aria-hidden="true"></i></a>
+                            <a href='{{ .Permalink }}' class="read-prompt" aria-labelledby="{{ .File.UniqueID }}">Visit street <i class="fas fa-chevron-circle-right ml-2" aria-hidden="true"></i></a>
                         </div>
                     </div>
                     {{ end }}
