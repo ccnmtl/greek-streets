@@ -1,21 +1,26 @@
 ---
-title: "Exarcheia [Εξάρχεια]"
+title: "Neapoli [Νεάπολη]"
 streets:
-- Aiolou
+- Dafnomili
 date: 2022-02-24T15:22:10-05:00
 draft: false
 ---
 
-Exarcheia (Greek: Εξάρχεια pronounced [eˈksaɾ.çi.a]) is a
-self-governing anarchist neighbourhood in central Athens, Greece close
-to the historical building of the National Technical University of
-Athens. The district took its name from a 19th century
-businessman named Exarchos (Greek: Έξαρχος) who opened a large general
-store there. Exarcheia is bordered on the east by Kolonaki and is
-framed by Patission Street, Panepistimiou Street and Alexandras
-Avenue. Exarcheia is renowned for being Athens' historical core of
-radical political and intellectual activism. Exarcheia is often
-considered the anarchist quarter of Athens, known for its radical
-democracy.
+Neapoli (Greek: Νεάπολη pronounced [neˈa.po.li]) is a neighborhood of
+Athens, Greece. It is located on the northern slope of Mount
+Lycabettus.
 
-Source: https://en.wikipedia.org/wiki/Exarcheia
+Neapoli means 'new city.' The name originally comes from the fact that
+it was a new area of Athens built beyond Praxitelous and Evripidou
+streets during the decades when the city was starting to become
+urbanised. Eventually, the name Neapoli came to refer to only the
+eastern side, while the western side became known as
+Metaxourgeio. Neapoli was built in the mid 19th century by
+constructors, plasterers and marble constructors who came in Athens
+searching for a better life. The land there was then outside the
+zoning area and consequently cheaper.
+
+The area is well known for book publishing and some of the oldest
+bookstores of Athens are found there.
+
+Source: https://en.wikipedia.org/wiki/Neapoli,_Athens
