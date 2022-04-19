@@ -6,16 +6,4 @@ vidSrc: https://d2b5j58ir6uajk.cloudfront.net/transcoded-videos/Strefi+Hill+(Lof
 slug: "strefi-hill"
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-facilisis lacus aliquet, tristique quam in, tristique ex. Nullam
-placerat ipsum sit amet risus euismod vulputate. Vestibulum laoreet
-malesuada porta. Phasellus accumsan magna a augue ultrices
-luctus. Integer id justo orci. Nullam porta magna et blandit
-gravida. Mauris fermentum, velit mattis auctor semper, lorem sapien
-suscipit est, quis interdum metus tellus vel odio. Donec consectetur
-sollicitudin dolor. Phasellus mattis nunc nisi, hendrerit ultricies
-mauris pretium sit amet. Ut at diam sit amet felis auctor iaculis eu
-ut ligula. Aenean venenatis magna in lacus volutpat cursus. Duis et
-ullamcorper sem. Vestibulum ante ipsum primis in faucibus orci luctus
-et ultrices posuere cubilia curae; Pellentesque nec leo a velit
-volutpat ultrices. Maecenas rhoncus sem blandit elit pulvinar posuere.
+Strefi Hill
