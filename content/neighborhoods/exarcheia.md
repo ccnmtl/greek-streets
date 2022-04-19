@@ -1,7 +1,5 @@
 ---
 title: "Exarcheia [Εξάρχεια]"
-streets:
-- Aiolou
 date: 2022-02-24T15:22:10-05:00
 draft: false
 ---
