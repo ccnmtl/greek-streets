@@ -55,7 +55,7 @@
             {{ .Content }}
             </div>
 
-            {{ partial "aframe.html" . }}
+            <iframe width="100%" height="500" src="/aframes/{{ .Params.slug }}/"></iframe>
 
             <p class="d-none d-print-block article-url-print">Printed from: {{ .Permalink }}</p>
             </div>
