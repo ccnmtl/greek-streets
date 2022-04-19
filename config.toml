@@ -3,7 +3,9 @@ copyright = "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Internati
 languageCode = "en-us"
 metaDataFormat = "yaml"
 title = "Hellenic Streets"
-cloudfrontBase = "https://d2b5j58ir6uajk.cloudfront.net"
+
+[params]
+  cloudfrontBase = "https://d2b5j58ir6uajk.cloudfront.net"
 
 [taxonomies]
   # default taxonomies
