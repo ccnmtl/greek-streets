@@ -55,7 +55,9 @@
             {{ .Content }}
             </div>
 
-            <iframe width="100%" height="500" src="/aframes/{{ .Params.slug }}/"></iframe>
+            <div class="ratio ratio-16x9">
+                <iframe title="360 Video" allowfullscreen src="/aframes/{{ .Params.slug }}/"></iframe>
+            </div>
 
             <p class="d-none d-print-block article-url-print">Printed from: {{ .Permalink }}</p>
             </div>
