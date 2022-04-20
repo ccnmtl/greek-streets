@@ -1,7 +1,6 @@
 ---
 title: "123 Asklipiou St-"
-date: 2022-04-19T15:22:10-05:00
-draft: false
+date: "2022-04-19"
 slug: "123-asklipiou-st"
 vidSrc: "https://ctl-hellenicstreets-dev.s3.amazonaws.com/transcoded-videos/123%20Asklipiou%20St-.mp4"
 ---
