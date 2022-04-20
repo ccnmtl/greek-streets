@@ -157,3 +157,32 @@ AFRAME.registerComponent('play-button', {
         });
     }
 });
+
+// https://stackoverflow.com/a/53009978/173630
+window.addEventListener('mousewheel', event => {
+    const delta = Math.sign(event.wheelDelta);
+    const camEl = document.getElementById('aframe-cam');
+    if (!camEl) {
+        return;
+    }
+
+    // get the mouse wheel change (120 or -120 and normalizing it to 1
+    // or -1)
+    const mycam = camEl.getAttribute('camera');
+    if (!mycam) {
+        return;
+    }
+
+    let finalZoom = mycam.zoom + delta;
+
+    // limit the zoom so it doesnt zoom too much in or out
+    if (finalZoom < 1) {
+        finalZoom = 1;
+    } else if (finalZoom > 5) {
+        finalZoom = 5;
+    }
+
+    mycam.zoom = finalZoom;
+    // set the camera element
+    camEl.setAttribute('camera', mycam);
+});
