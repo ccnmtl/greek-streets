@@ -6,38 +6,9 @@
 
         <main class="container" id="maincontent" aria-label="List of latest and recent articles">
 
-            Welcome to Greek Streets!
-
-            <section class="latest-post" aria-labelledby="sectionlatest">
-                <article itemscope itemtype="http://http://schema.org/BlogPosting">
-                    {{ range first 1 ( where .Site.Pages "Type" "street" ) }}
-                    <div class="row">
-                        <div class="col-lg-7">
-                            <figure aria-hidden="true">
-                                <img src="{{ .Site.BaseURL }}img/assets/{{ .Params.hiliteimg }}" aria-hidden="true" alt="" class="img-fluid" />
-                            </figure>
-                        </div>
-                        <div class="col-lg-5">
-                            <h2 id="sectionlatest">Latest street</h2>
-                            <h3 id="{{ .File.UniqueID }}"><a href="{{ .Permalink }}" itemprop="url"><span itemprop="headline">{{ .Title }}</span></a></h3>
-                            <time itemprop="datePublished" datetime='{{ .Date.Format "2006-01-02"  }}' class="post-datepublished">{{ .Date.Format "Jan 2, 2006" }}</time>
-                            <p>{{ if .Params.shortlede }}
-                                {{ .Params.shortlede }}
-                                {{ else if .Params.lede }}
-                                {{ .Params.lede }}
-                                {{ else }}
-                                {{ .Summary  }}
-                                {{ end }}</p>
-                            {{ if .Params.tags }}<p class="post-tags"><strong>Tags:</strong>
-                                {{ range $i, $e := .Params.tags }}{{if $i}}, {{end}}
-                                <a href="{{ "/tags/" | relLangURL }}{{ . | urlize | lower }}" rel="tag"><span itemprop="keywords">{{$e}}</span></a>{{ end }}
-                            </p>{{ end }}
-                            <a href='{{ .Permalink }}' class="read-prompt" aria-labelledby="{{ .File.UniqueID }}">Visit street <i class="fas fa-chevron-circle-right ml-2" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                    {{ end }}
-                </article>
-            </section>
+            <p>
+                Welcome to Greek Streets!
+            </p>
 
             <a href="{{ $.Site.Params.cloudfrontBase }}/34_FILES_360_ATHENS_EXARCHIA/2+ANDREA+METAXA+ST/PHOTOS/2+Andrea+Metaxa+ST+(2).JPG">
                 <img class="img-fluid front-img mt-2"
