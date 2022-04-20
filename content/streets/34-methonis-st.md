@@ -1,0 +1,9 @@
+---
+title: "34 Methonis ST"
+date: 2022-04-20T15:22:10-05:00
+draft: false
+slug: "34-methonis-st"
+vidSrc: "https://ctl-hellenicstreets-dev.s3.amazonaws.com/transcoded-videos/34%20Methonis%20ST.mp4"
+---
+
+34 Methonis ST
