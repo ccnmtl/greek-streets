@@ -1,198 +1,206 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
               rel="stylesheet"
               integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-              crossorigin="anonymous">
-<style type="text/css">
-.vid-menu {
-    position: absolute;
-    left: 16px;
-    bottom: 16px;
-}
-</style>
+              crossorigin="anonymous" />
+        <style type="text/css">
+        .vid-menu {
+            position: absolute;
+            left: 16px;
+            bottom: 16px;
+        }
+        </style>
 
-<script src="https://aframe.io/releases/1.3.0/aframe.js"></script>
-<script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
-<script src="https://unpkg.com/aframe-environment-component@1.3.0/dist/aframe-environment-component.min.js"></script>
-<script src="/js/info-message.js"></script>
-<script src="/js/highlight.js"></script>
-<script src="/js/info-panel.js"></script>
+        <script src="https://aframe.io/releases/1.3.0/aframe.js"></script>
+        <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+        <script src="https://unpkg.com/aframe-environment-component@1.3.0/dist/aframe-environment-component.min.js"></script>
+        <script src="/js/info-message.js"></script>
+        <script src="/js/highlight.js"></script>
+        <script src="/js/info-panel.js"></script>
 
-<script src="/js/main.js"></script>
-<!-- Image link template to be reused. -->
-<script id="link" type="text/html">
-    <a-entity class="link"
-              geometry="primitive: plane; height: 1; width: 1"
-              material="shader: flat; src: ${thumb}"
-              event-set__mouseenter="scale: 1.2 1.2 1"
-              event-set__mouseleave="scale: 1 1 1"
-              event-set__click="_target: #image-360; _delay: 300; material.src: ${src}"
-              proxy-event="event: click; to: #image-360; as: fade"
-              sound="on: click; src: #click-sound"></a-entity>
-</script>
+        <script src="/js/main.js"></script>
+        <!-- Image link template to be reused. -->
+        <script id="link" type="text/html">
+            <a-entity class="link"
+                      geometry="primitive: plane; height: 1; width: 1"
+                      material="shader: flat; src: ${thumb}"
+                      event-set__mouseenter="scale: 1.2 1.2 1"
+                      event-set__mouseleave="scale: 1 1 1"
+                      event-set__click="_target: #image-360; _delay: 300; material.src: ${src}"
+                      proxy-event="event: click; to: #image-360; as: fade"
+                      sound="on: click; src: #click-sound"></a-entity>
+        </script>        
+    </head>
+    <body>
+        <div class="container">
+            <a-scene
+                video="activeVideo: videoTravel"
+                cursor="rayOrigin: mouse"
+                raycaster="objects: [data-raycastable]"
+                device-orientation-permission-ui="enabled: false">
 
-<div class="container">
-    <a-scene
-        video="activeVideo: videoTravel"
-        cursor="rayOrigin: mouse"
-        raycaster="objects: [data-raycastable]"
-        device-orientation-permission-ui="enabled: false">
+                <a-assets>
+                    <a-asset-item id="messageText" src="/message.html"></a-asset-item>
+                    <!--
+                         Image source: http://www.ghibli.jp/works/kazetachinu/#frame&gid=1&pid=1
+                         Image author: Studio Ghibli
+                    -->
+                    <img id="kazetachinu" src="https://cdn.aframe.io/examples/ui/kazetachinu.jpg" crossorigin="anonymous"/>
+                    <img id="loca1Poster" src="/loca1.jpg" crossorigin="anonymous"/>
+                    <!--
+                         Image source: http://www.ghibli.jp/works/ponyo/#frame&gid=1&pid=36
+                         Image author: Studio Ghibli
+                    -->
+                    <img id="ponyo" src="https://cdn.aframe.io/examples/ui/ponyo.jpg" crossorigin="anonymous"/>
+                    <img id="ponyoPoster" src="https://cdn.aframe.io/examples/ui/ponyoPoster.jpg" crossorigin="anonymous"/>
+                    <!--
+                         Image source: http://www.ghibli.jp/works/karigurashi/#frame&gid=1&pid=32
+                         Image author: Studio Ghibli
+                    -->
+                    <img id="karigurashi" src="https://cdn.aframe.io/examples/ui/karigurashi.jpg" crossorigin="anonymous"/>
+                    <img id="karigurashiPoster" src="https://cdn.aframe.io/examples/ui/karigurashiPoster.jpg" crossorigin="anonymous"/>
+                    <!--
+                    <a-mixin
+                        id="frame"
+                        geometry="primitive: plane; width: 0.5783552; height: 0.8192"
+                        material="color: white; shader: flat"
+                        animation__scale="property: scale; to: 1.2 1.2 1.2; dur: 200; startEvents: mouseenter"
+                        animation__scale_reverse="property: scale; to: 1 1 1; dur: 200; startEvents: mouseleave"
+                    ></a-mixin>
+                    <a-mixin
+                        id="poster"
+                        geometry="primitive: plane; width: 0.544768; height: 0.786432"
+                        material="color: white; shader: flat"
+                        material="shader: flat"
+                        position="0 0 0.005"
+                    ></a-mixin>
+                    <a-mixin
+                        id="movieImage"
+                        geometry="primitive: plane; width: 1.5; height: 0.81"
+                        material="src: #ponyo; shader: flat; transparent: true"
+                        position="0 0.495 0.002"
+                    ></a-mixin>-->
 
-    <a-assets>
-        <a-asset-item id="messageText" src="/message.html"></a-asset-item>
-        <!--
-             Image source: http://www.ghibli.jp/works/kazetachinu/#frame&gid=1&pid=1
-             Image author: Studio Ghibli
-        -->
-        <img id="kazetachinu" src="https://cdn.aframe.io/examples/ui/kazetachinu.jpg" crossorigin="anonymous"/>
-        <img id="loca1Poster" src="/loca1.jpg" crossorigin="anonymous"/>
-        <!--
-             Image source: http://www.ghibli.jp/works/ponyo/#frame&gid=1&pid=36
-             Image author: Studio Ghibli
-        -->
-        <img id="ponyo" src="https://cdn.aframe.io/examples/ui/ponyo.jpg" crossorigin="anonymous"/>
-        <img id="ponyoPoster" src="https://cdn.aframe.io/examples/ui/ponyoPoster.jpg" crossorigin="anonymous"/>
-        <!--
-             Image source: http://www.ghibli.jp/works/karigurashi/#frame&gid=1&pid=32
-             Image author: Studio Ghibli
-        -->
-        <img id="karigurashi" src="https://cdn.aframe.io/examples/ui/karigurashi.jpg" crossorigin="anonymous"/>
-        <img id="karigurashiPoster" src="https://cdn.aframe.io/examples/ui/karigurashiPoster.jpg" crossorigin="anonymous"/>
-        <!--
-        <a-mixin
-            id="frame"
-            geometry="primitive: plane; width: 0.5783552; height: 0.8192"
-            material="color: white; shader: flat"
-            animation__scale="property: scale; to: 1.2 1.2 1.2; dur: 200; startEvents: mouseenter"
-            animation__scale_reverse="property: scale; to: 1 1 1; dur: 200; startEvents: mouseleave"
-        ></a-mixin>
-        <a-mixin
-            id="poster"
-            geometry="primitive: plane; width: 0.544768; height: 0.786432"
-            material="color: white; shader: flat"
-            material="shader: flat"
-            position="0 0 0.005"
-        ></a-mixin>
-        <a-mixin
-            id="movieImage"
-            geometry="primitive: plane; width: 1.5; height: 0.81"
-            material="src: #ponyo; shader: flat; transparent: true"
-            position="0 0.495 0.002"
-        ></a-mixin>-->
+                    <video id="videoTravel" preload="auto"
+                           src="{{ .Params.vidSrc }}"               
+                           width="160" height="90" loop="false"
+                           crossOrigin="anonymous"></video>
 
-        <video id="videoTravel" preload="auto"
-               src="{{ .Params.vidSrc }}"               
-               width="160" height="90" loop="false"
-               crossOrigin="anonymous"></video>
+                    <!--<video id="videoLocation" preload="auto"
+                         src="{{ .Params.vidSrc }}"
+                         width="160" height="90" loop="true"
+                         crossOrigin="anonymous"></video>-->
+                </a-assets>
 
-        <!--<video id="videoLocation" preload="auto"
-               src="{{ .Params.vidSrc }}"
-               width="160" height="90" loop="true"
-               crossOrigin="anonymous"></video>-->
-    </a-assets>
+                <a-entity
+                    id="background"
+                    position="0 0 0"
+                    geometry="primitive: sphere; radius: 2.0"
+                    material="color: red; side: back; shader: flat"
+                    scale="0.001 0.001 0.001"
+                    visible="false"
+                    data-raycastable="" class="raycastable">
+                </a-entity>
 
-    <a-entity
-        id="background"
-        position="0 0 0"
-        geometry="primitive: sphere; radius: 2.0"
-        material="color: red; side: back; shader: flat"
-        scale="0.001 0.001 0.001"
-        visible="false"
-        data-raycastable="" class="raycastable">
-    </a-entity>
+                <a-entity
+                    position="0 1.6 0"
+                    camera look-controls="magicWindowTrackingEnabled: false; touchEnabled: false; mouseEnabled: false">
+                    <a-entity
+                        id="fadeBackground"
+                        geometry="primitive: sphere; radius: 2.5"
+                        material="color: black; side: back; shader: flat; transparent: true; opacity: 0.6" visible="false">
+                    </a-entity>
+                </a-entity>
 
-    <a-entity
-        position="0 1.6 0"
-        camera look-controls="magicWindowTrackingEnabled: false; touchEnabled: false; mouseEnabled: false">
-        <a-entity
-            id="fadeBackground"
-            geometry="primitive: sphere; radius: 2.5"
-            material="color: black; side: back; shader: flat; transparent: true; opacity: 0.6" visible="false">
-        </a-entity>
-    </a-entity>
+                <!-- Hand controls -->
+                <a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: [data-raycastable]" line="color: #118A7E"></a-entity>
 
-    <!-- Hand controls -->
-    <a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: [data-raycastable]" line="color: #118A7E"></a-entity>
+                <a-entity id="ui" position="0 1.6 -2.5">
+                    <!-- Poster menu -->
+                    <a-entity id="menu" highlight>
+                        <a-entity id="karigurashiButton" position="-0.8 0 0" mixin="frame" class="raycastable menu-button" data-raycastable="">
+                            <a-entity material="src: #karigurashiPoster;" mixin="poster"></a-entity>
+                        </a-entity>
 
-    <a-entity id="ui" position="0 1.6 -2.5">
-        <!-- Poster menu -->
-        <a-entity id="menu" highlight>
-            <a-entity id="karigurashiButton" position="-0.8 0 0" mixin="frame" class="raycastable menu-button" data-raycastable="">
-                <a-entity material="src: #karigurashiPoster;" mixin="poster"></a-entity>
-            </a-entity>
+                        <a-entity id="kazetachinuButton" position="0 0 0" mixin="frame" class="raycastable menu-button" data-raycastable="">
+                            <a-entity material="src: #loca1Poster" mixin="poster"></a-entity>
+                        </a-entity>
 
-            <a-entity id="kazetachinuButton" position="0 0 0" mixin="frame" class="raycastable menu-button" data-raycastable="">
-                <a-entity material="src: #loca1Poster" mixin="poster"></a-entity>
-            </a-entity>
+                        <a-entity id="ponyoButton" position="0.8 0 0" mixin="frame" class="raycastable menu-button" data-raycastable="">
+                            <a-entity material="src: #ponyoPoster" mixin="poster"></a-entity>
+                        </a-entity>
+                    </a-entity>
 
-            <a-entity id="ponyoButton" position="0.8 0 0" mixin="frame" class="raycastable menu-button" data-raycastable="">
-                <a-entity material="src: #ponyoPoster" mixin="poster"></a-entity>
-            </a-entity>
-        </a-entity>
+                    <!-- Info panel of the selected movie. -->
+                    <a-entity
+                        id="infoPanel"
+                        position="0 0 0.5"
+                        info-panel
+                        visible="false"
+                        scale="0.001 0.001 0.001"
+                        geometry="primitive: plane; width: 1.5; height: 1.8"
+                        material="color: #333333; shader: flat; transparent: false" class="raycastable" data-raycastable="">
+                        <a-entity id="ponyoMovieImage" mixin="movieImage" material="src: #ponyo" visible="false"></a-entity>
+                        <a-entity id="kazetachinuMovieImage" mixin="movieImage" material="src: #kazetachinu" visible="false"></a-entity>
+                        <a-entity id="karigurashiMovieImage" mixin="movieImage" material="src: #karigurashi" visible="false"></a-entity>
+                        <a-entity id="movieTitle"
+                                  position="-0.68 -0.1 0"
+                                  text="shader: msdf; anchor: left; width: 1.5; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; color: white; value: Ponyo (2003)"></a-entity>
+                        <a-entity id="movieDescription"
+                                  position="-0.68 -0.2 0"
+                                  text="baseline: top; shader: msdf; anchor: left; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; color: white; value: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."></a-entity>
+                    </a-entity>
+                </a-entity>
 
-        <!-- Info panel of the selected movie. -->
-        <a-entity
-            id="infoPanel"
-            position="0 0 0.5"
-            info-panel
-            visible="false"
-            scale="0.001 0.001 0.001"
-            geometry="primitive: plane; width: 1.5; height: 1.8"
-            material="color: #333333; shader: flat; transparent: false" class="raycastable" data-raycastable="">
-            <a-entity id="ponyoMovieImage" mixin="movieImage" material="src: #ponyo" visible="false"></a-entity>
-            <a-entity id="kazetachinuMovieImage" mixin="movieImage" material="src: #kazetachinu" visible="false"></a-entity>
-            <a-entity id="karigurashiMovieImage" mixin="movieImage" material="src: #karigurashi" visible="false"></a-entity>
-            <a-entity id="movieTitle"
-                      position="-0.68 -0.1 0"
-                      text="shader: msdf; anchor: left; width: 1.5; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; color: white; value: Ponyo (2003)"></a-entity>
-            <a-entity id="movieDescription"
-                      position="-0.68 -0.2 0"
-                      text="baseline: top; shader: msdf; anchor: left; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; color: white; value: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."></a-entity>
-        </a-entity>
-    </a-entity>
+                <a-videosphere
+                    video="src: videoTravel; active: true"
+                    id="videoTravel-sphere"
+                    src="#videoTravel"></a-videosphere>
 
-    <a-videosphere
-        video="src: videoTravel; active: true"
-        id="videoTravel-sphere"
-        src="#videoTravel"></a-videosphere>
+                <!--<a-videosphere
+                     video="src: videoLocation; active: false"
+                     id="videoLocation-sphere"
+                     src="#videoLocation"></a-videosphere>-->
 
-    <!--<a-videosphere
-        video="src: videoLocation; active: false"
-        id="videoLocation-sphere"
-        src="#videoLocation"></a-videosphere>-->
+                <a-camera id="aframe-cam">                    
+                    <a-entity material="shader: flat; src: #videoTravel"
+                              geometry="primitive: plane; width: 160; height: 90;"
+                              position="0 60 -250"
+                              rotation="0 35 0"
+                              play-on-click
+                              visible="false">
+                    </a-entity>
+                    <a-cursor></a-cursor>
+                </a-camera>
+            </a-scene>
 
-    <a-camera id="aframe-cam">
-        <a-entity material="shader: flat; src: #videoTravel"
-                  geometry="primitive: plane; width: 160; height: 90;"
-                  position="0 60 -250"
-                  rotation="0 35 0"
-                  play-on-click
-                  visible="false">
-        </a-entity>
-        <a-cursor></a-cursor>
-    </a-camera>
-</a-scene>
+            <div class="vid-menu">
+                <button class="btn btn-success" id="play-button" name="play">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">
+                        <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
+                    </svg>
+                    Play
+                </button>
+                <button class="btn btn-dark" id="pause-button" name="pause">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pause" viewBox="0 0 16 16">
+                        <path d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z"/>
+                    </svg>
+                    Pause
+                </button>
+>>>>>>> 5dac09b (Clean up templates)
 
-<div class="vid-menu">
-    <button class="btn btn-success" id="play-button" name="play">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">
-            <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
-        </svg>
-        Play
-    </button>
-    <button class="btn btn-dark" id="pause-button" name="pause">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pause" viewBox="0 0 16 16">
-            <path d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z"/>
-        </svg>
-        Pause
-    </button>
-
-    <!--
-    <button class="btn btn-dark" id="location-button" name="location">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-skip-forward" viewBox="0 0 16 16">
-            <path d="M15.5 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V8.752l-6.267 3.636c-.52.302-1.233-.043-1.233-.696v-2.94l-6.267 3.636C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696L7.5 7.248v-2.94c0-.653.713-.998 1.233-.696L15 7.248V4a.5.5 0 0 1 .5-.5zM1 4.633v6.734L6.804 8 1 4.633zm7.5 0v6.734L14.304 8 8.5 4.633z"/>
-        </svg>
-        Go to Location
-    </button>
-    -->
-</div>
-</div>
+                <!--
+                     <button class="btn btn-dark" id="location-button" name="location">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-skip-forward" viewBox="0 0 16 16">
+                     <path d="M15.5 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V8.752l-6.267 3.636c-.52.302-1.233-.043-1.233-.696v-2.94l-6.267 3.636C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696L7.5 7.248v-2.94c0-.653.713-.998 1.233-.696L15 7.248V4a.5.5 0 0 1 .5-.5zM1 4.633v6.734L6.804 8 1 4.633zm7.5 0v6.734L14.304 8 8.5 4.633z"/>
+                     </svg>
+                     Go to Location
+                     </button>
+                -->
+            </div>
+        </div>
+    </body>
+</html>

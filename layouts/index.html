@@ -1,19 +1,12 @@
-<!doctype html>
-<html lang="en">
-    {{ partial "head.html" . }}
-    <body itemscope itemtype="http://schema.org/Blog">
-        {{ partial "header.html" . }}
+{{ define "main" }}
+<main class="container" id="maincontent" aria-label="List of latest and recent articles">
+    <p>
+        Welcome to Greek Streets!
+    </p>
 
-        <main class="container" id="maincontent" aria-label="List of latest and recent articles">
-
-            <p>
-                Welcome to Greek Streets!
-            </p>
-
-            <a href="{{ $.Site.Params.cloudfrontBase }}/34_FILES_360_ATHENS_EXARCHIA/2+ANDREA+METAXA+ST/PHOTOS/2+Andrea+Metaxa+ST+(2).JPG">
-                <img class="img-fluid front-img mt-2"
-                     src="{{ $.Site.Params.cloudfrontBase }}/34_FILES_360_ATHENS_EXARCHIA/2+ANDREA+METAXA+ST/PHOTOS/2+Andrea+Metaxa+ST+(2).JPG" />
-            </a>
-        </main>
-    </body>
-</html>
+    <a href="{{ $.Site.Params.cloudfrontBase }}/34_FILES_360_ATHENS_EXARCHIA/2+ANDREA+METAXA+ST/PHOTOS/2+Andrea+Metaxa+ST+(2).JPG">
+        <img class="img-fluid front-img mt-2"
+             src="{{ $.Site.Params.cloudfrontBase }}/34_FILES_360_ATHENS_EXARCHIA/2+ANDREA+METAXA+ST/PHOTOS/2+Andrea+Metaxa+ST+(2).JPG" />
+    </a>
+</main>
+{{ end }}
