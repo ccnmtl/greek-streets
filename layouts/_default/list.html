@@ -9,12 +9,11 @@
         {{.Content}}
     </article>
     <ul>
-    <!-- Ranges through content/posts/*.md -->
-    {{ range .Pages }}
+        {{ range .Pages }}
         <li>
             <a href="{{.Permalink}}">{{.Title}}</a>
         </li>
-    {{ end }}
+        {{ end }}
     </ul>
 </main>
 {{ end }}
