@@ -66,7 +66,7 @@ def make_street(vid_url):
 
     templ_string = """---
 title: "$street_name"
-date: 2022-04-20T15:22:10-05:00
+date: 2022-04-19T15:22:10-05:00
 draft: false
 slug: "$street_slug"
 vidSrc: "$vid_src"
