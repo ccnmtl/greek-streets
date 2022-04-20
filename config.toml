@@ -6,12 +6,3 @@ title = "Hellenic Streets"
 
 [params]
   cloudfrontBase = "https://d2b5j58ir6uajk.cloudfront.net"
-
-[taxonomies]
-  # default taxonomies
-  category = 'categories'
-  tag = 'tags'
-
-  # custom taxonomies
-  street = 'streets'
-  neighborhood = 'neighborhoods'
