@@ -6,6 +6,10 @@ AFRAME.registerSystem('video', {
         activeVideo: {type: 'string', default: null}
     },
 
+    state: {
+        playing: true
+    },
+
     init: function() {
         this.activeVideoEl = null;
         this.activeVideoEl = document.createElement('a-entity');
@@ -16,8 +20,7 @@ AFRAME.registerSystem('video', {
         const me = this;
 
         this.videoSelectors = [
-            'videoTravel',
-            'videoLoc'
+            'mainVideo'
         ];
 
         // Attach to the video UI button events. Note that these are
@@ -32,14 +35,18 @@ AFRAME.registerSystem('video', {
                 me.pauseVideo();
             });
 
-        document.getElementById('location-button')
-            .addEventListener('click', function() {
-                me.pauseVideo();
 
-                me.setActiveVideo('videoLocation');
-
-                me.playVideo();
-            });
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space') {
+                const activeVideo = me.getActiveVideo();
+                const video = document.getElementById(activeVideo);
+                if (me.state.playing) {
+                    me.pauseVideo(video);
+                } else {
+                    me.playVideo(video);
+                }
+            }
+        });
     },
 
     getActiveVideo: function() {
@@ -79,9 +86,13 @@ AFRAME.registerSystem('video', {
     },
 
     // play active video
-    playVideo: function() {
+    playVideo: function(video=null) {
         const activeVideo = this.getActiveVideo();
-        const video = document.getElementById(activeVideo);
+
+        if (!video) {
+            video = document.getElementById(activeVideo);
+        }
+
         const vidSphere = document.getElementById(activeVideo + '-sphere');
 
         if (vidSphere) {
@@ -90,15 +101,19 @@ AFRAME.registerSystem('video', {
 
         if (video) {
             video.play();
+            this.state.playing = true;
         }
     },
 
-    pauseVideo: function() {
-        const activeVideo = this.getActiveVideo();
-        const video = document.getElementById(activeVideo);
+    pauseVideo: function(video=null) {
+        if (!video) {
+            const activeVideo = this.getActiveVideo();
+            video = document.getElementById(activeVideo);
+        }
 
         if (video) {
             video.pause();
+            this.state.playing = false;
         }
     }
 });

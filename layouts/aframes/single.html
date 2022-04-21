@@ -36,7 +36,7 @@
     </head>
     <body>
         <a-scene
-            video="activeVideo: videoTravel"
+            video="activeVideo: mainVideo"
             cursor="rayOrigin: mouse"
             raycaster="objects: [data-raycastable]"
             device-orientation-permission-ui="enabled: false">
@@ -83,9 +83,10 @@
                      position="0 0.495 0.002"
                      ></a-mixin>-->
 
-                <video id="videoTravel" preload="auto"
+                <video id="mainVideo" preload="auto"
                        src="{{ .Params.vidSrc }}"
-                       width="160" height="90" loop="false"
+                       autoplay
+                       width="160" height="90" loop="true"
                        crossOrigin="anonymous"></video>
 
                 <!--<video id="videoLocation" preload="auto"
@@ -155,9 +156,9 @@
             </a-entity>
 
             <a-videosphere
-                video="src: videoTravel; active: true"
-                id="videoTravel-sphere"
-                src="#videoTravel"></a-videosphere>
+                video="src: mainVideo; active: true"
+                id="mainVideo-sphere"
+                src="#mainVideo"></a-videosphere>
 
             <!--<a-videosphere
                  video="src: videoLocation; active: false"
@@ -165,7 +166,7 @@
                  src="#videoLocation"></a-videosphere>-->
 
             <a-camera id="aframe-cam">
-                <a-entity material="shader: flat; src: #videoTravel"
+                <a-entity material="shader: flat; src: #mainVideo"
                           geometry="primitive: plane; width: 160; height: 90;"
                           position="0 60 -250"
                           rotation="0 35 0"
