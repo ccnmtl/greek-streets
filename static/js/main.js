@@ -1,3 +1,15 @@
+function toggleFullscreen() {
+    let elem = document.querySelector('#aframe-body');
+
+    if (!document.fullscreenElement) {
+        elem.requestFullscreen().catch(err => {
+            alert(`Error attempting to enable fullscreen mode: ${err.message} (${err.name})`);
+        });
+    } else {
+        document.exitFullscreen();
+    }
+}
+
 /**
  * Based loosely on a-frame's "camera" system.
  */
@@ -35,6 +47,10 @@ AFRAME.registerSystem('video', {
                 me.pauseVideo();
             });
 
+        document.getElementById('fullscreen-button')
+            .addEventListener('click', function() {
+                toggleFullscreen();
+            });
 
         document.addEventListener('keydown', (e) => {
             if (e.code === 'Space') {
