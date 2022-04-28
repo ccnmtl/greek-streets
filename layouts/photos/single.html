@@ -33,8 +33,11 @@
                 {{ .Content }}
             </div>
 
-            <h5>A-Frame:</h5>
-            {{ partial "aframe.html" . }}
+            {{ range .Params.photos }}
+            <a href="{{ . }}">
+                <img class="img-fluid mb-2" src="{{ . }}" />
+            </a>
+            {{ end }}
 
             <p class="d-none d-print-block article-url-print">Printed from: {{ .Permalink }}</p>
         </div>
