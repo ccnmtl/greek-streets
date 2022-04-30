@@ -8,23 +8,19 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                {{ $currentPage := . }}
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    {{ range .Site.Menus.main }}
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        <a class="nav-link {{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active{{end}}"
+                           href="{{ .URL }}"
+                           title="{{ .Title }}">
+                            {{ .Name }}
+                        </a>
                     </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/videos/">Videos</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/photos/">Photos</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/streets/">Streets</a>
-                    </li>
+                    {{ end }}
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -73,7 +69,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/about/">About this Project</a>
+                        <a class="nav-link" href="/about/">About</a>
                     </li>
                 </ul>
                 <form class="d-flex">

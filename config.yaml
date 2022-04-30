@@ -1,0 +1,20 @@
+baseURL: "https://hellenic-streets.ctl.columbia.edu/"
+copyright: "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)"
+languageCode: "en-us"
+metaDataFormat: "yaml"
+title: "Hellenic Streets"
+
+menu:
+  main:
+  - identifier: 'videos'
+    name: 'Videos'
+    title: 'Videos'
+    url: '/videos/'
+
+  - identifier: 'photos'
+    name: 'Photos'
+    title: 'Photos'
+    url: '/photos/'
+
+params:
+  cloudfrontBase: "https://d2b5j58ir6uajk.cloudfront.net"
