@@ -33,8 +33,9 @@
                 {{ .Content }}
             </div>
 
-            <h5>A-Frame:</h5>
-            {{ partial "aframe.html" . }}
+            <div class="ratio ratio-16x9">
+                <iframe class="gs-aframe"  title="360 Video" allowfullscreen src="/aframes/{{ .Params.slug }}/"></iframe>
+            </div>
 
             <p class="d-none d-print-block article-url-print">Printed from: {{ .Permalink }}</p>
         </div>
