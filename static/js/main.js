@@ -21,6 +21,18 @@ const resetCamera = function(cameraEl) {
     lookControls.yawObject.rotation.y = 0;
 };
 
+const updateVideoTimeline = function(ratio, input) {
+    input.value = ratio;
+};
+
+const setupVideoTimeline = function(videoEl, inputEl) {
+    videoEl.ontimeupdate = function(event) {
+        const ratio = (videoEl.currentTime / videoEl.duration) * 100;
+
+        updateVideoTimeline(ratio, inputEl);
+    };
+};
+
 /**
  * Based loosely on a-frame's "camera" system.
  */
@@ -80,6 +92,11 @@ AFRAME.registerSystem('video', {
                 }
             }
         });
+
+        const video = document.querySelector('video');
+        const input = document.querySelector('input#gs-video-range');
+
+        setupVideoTimeline(video, input);
     },
 
     getActiveVideo: function() {
