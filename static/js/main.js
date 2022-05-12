@@ -1,3 +1,5 @@
+/* global AFRAME */
+
 function toggleFullscreen() {
     let elem = document.querySelector('#aframe-body');
 
@@ -86,7 +88,7 @@ AFRAME.registerSystem('video', {
         const videoEls = this.sceneEl.querySelectorAll(
             'a-videosphere, [videosphere]');
         for (let i = 0; i < videoEls.length; i++) {
-            videoEl = videoEls[i];
+            let videoEl = videoEls[i];
 
             if (
                 videoEl &&

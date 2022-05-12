@@ -7,7 +7,7 @@ HUGO=`which hugo`
 
 all: eslint
 
-include *.mk
+JS_FILES=static/js
 
 clean:
 	rm -rf $(PUBLIC)/*
@@ -17,3 +17,5 @@ $(PUBLIC)/js/all.json: $(PUBLIC)/json/all/index.html
 	mv $< $@ && ./checkjson.py
 
 .PHONY: clean
+
+include *.mk
