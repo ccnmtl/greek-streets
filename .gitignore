@@ -3,3 +3,4 @@ assets/
 static/*.webm
 static/*.mov
 static/*.mp4
+node_modules

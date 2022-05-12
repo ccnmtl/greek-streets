@@ -1,0 +1,25 @@
+{
+  "name": "hellenic-streets",
+  "version": "0.1.0",
+  "description": "Greek Streets 360 video project",
+  "main": "static/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ccnmtl/hellenic-streets.git"
+  },
+  "author": "Nik Nyby",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/ccnmtl/hellenic-streets/issues"
+  },
+  "homepage": "https://github.com/ccnmtl/hellenic-streets#readme",
+  "dependencies": {
+    "npm": "^8.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0"
+  }
+}

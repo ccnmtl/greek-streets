@@ -57,7 +57,7 @@ AFRAME.registerComponent('info-panel', {
     this.movieDescriptionEl.setAttribute('text', 'value', movieInfo.description);
   },
 
-  onBackgroundClick: function (evt) {
+  onBackgroundClick: function () {
     this.backgroundEl.object3D.scale.set(0.001, 0.001, 0.001);
     this.el.object3D.scale.set(0.001, 0.001, 0.001);
     this.el.object3D.visible = false;
