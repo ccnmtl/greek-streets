@@ -50,13 +50,18 @@
                 </ul>
             </div>
         </header>
-        <div class="col-lg-10 offset-lg-1 entry-content-col">
-            <div class="entry-content">
+        <div class="entry-content-col">
+            <div class="ratio ratio-16x9">
+                <iframe class="gs-aframe"  title="360 Video" allowfullscreen src="/aframes/{{ .Params.slug }}/"></iframe>
+            </div>
+
+            <div class="entry-content mt-2">
                 {{ .Content }}
             </div>
 
-            <div class="ratio ratio-16x9">
-                <iframe class="gs-aframe"  title="360 Video" allowfullscreen src="/aframes/{{ .Params.slug }}/"></iframe>
+            <div>
+                <h4>Tags:</h4>
+                <a href="#">test</a>, <a href="#">test2</a>
             </div>
 
             <p class="d-none d-print-block article-url-print">Printed from: {{ .Permalink }}</p>
