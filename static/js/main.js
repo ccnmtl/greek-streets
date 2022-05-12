@@ -26,10 +26,15 @@ const updateVideoTimeline = function(ratio, input) {
 };
 
 const setupVideoTimeline = function(videoEl, inputEl) {
-    videoEl.ontimeupdate = function(event) {
+    videoEl.ontimeupdate = function() {
         const ratio = (videoEl.currentTime / videoEl.duration) * 100;
 
         updateVideoTimeline(ratio, inputEl);
+    };
+
+    inputEl.onchange = function(e) {
+        const currentTime = (e.target.value / 100) * videoEl.duration;
+        videoEl.currentTime = currentTime;
     };
 };
 
