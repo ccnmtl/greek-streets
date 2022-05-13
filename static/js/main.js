@@ -192,7 +192,10 @@ AFRAME.registerComponent('play-button', {
 });
 
 // https://stackoverflow.com/a/53009978/173630
-window.addEventListener('mousewheel', event => {
+window.addEventListener('mousewheel', function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
     const delta = Math.sign(event.wheelDelta);
     const camEl = document.getElementById('aframe-cam');
     if (!camEl) {
@@ -218,4 +221,4 @@ window.addEventListener('mousewheel', event => {
     mycam.zoom = finalZoom;
     // set the camera element
     camEl.setAttribute('camera', mycam);
-});
+}, {passive: false});
