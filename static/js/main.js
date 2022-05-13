@@ -1,6 +1,6 @@
 /* global AFRAME */
 
-function toggleFullscreen() {
+const toggleFullscreen = function() {
     let elem = document.querySelector('#aframe-body');
 
     if (!document.fullscreenElement) {
@@ -10,7 +10,16 @@ function toggleFullscreen() {
     } else {
         document.exitFullscreen();
     }
-}
+};
+
+const resetCamera = function(cameraEl) {
+    // https://www.demo2s.com/javascript/javascript-a-frame-orientation-with-initial-camera-rotation.html
+    const lookControls = cameraEl.components['look-controls'];
+    lookControls.pitchObject.rotation.x = 0;
+    lookControls.pitchObject.rotation.y = 0;
+    lookControls.yawObject.rotation.x = 0;
+    lookControls.yawObject.rotation.y = 0;
+};
 
 /**
  * Based loosely on a-frame's "camera" system.
@@ -52,6 +61,12 @@ AFRAME.registerSystem('video', {
         document.getElementById('fullscreen-button')
             .addEventListener('click', function() {
                 toggleFullscreen();
+            });
+
+        document.getElementById('reset-button')
+            .addEventListener('click', function() {
+                const camEl = document.querySelector('a-camera');
+                resetCamera(camEl);
             });
 
         document.addEventListener('keydown', (e) => {
