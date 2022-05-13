@@ -145,49 +145,8 @@ AFRAME.registerComponent('video', {
         active: {type: 'boolean', default: false}
     },
     init: function() {
-        if (this.data.active) {
-            this.el.object3D.visible = true;
-        } else {
-            this.el.object3D.visible = false;
-        }
     },
-    update: function (oldData) {
-        const data = this.data;
-
-        // No change
-        if (oldData && oldData.active === data.active) {
-            return;
-        }
-
-        const system = this.system;
-
-        // If `active` property changes, or first update, handle
-        // active video with system.
-        if (data.active && system.activeVideo !== this.data.src) {
-            // Video enabled. Set video to this video.
-            //system.setActiveVideo(this.el.src);
-            this.el.object3D.visible = true;
-        } else if (!data.active) {
-            this.el.object3D.visible = false;
-            // Video disabled. Set video to another video.
-            //system.disableActiveVideo();
-        }
-    }
-});
-
-AFRAME.registerComponent('hotspot1', {
-    init: function() {
-        this.el.addEventListener('click', function() {
-            console.log('click!');
-        });
-    }
-});
-
-AFRAME.registerComponent('play-button', {
-    init: function() {
-        this.el.addEventListener('click', function() {
-            console.log('click!');
-        });
+    update: function () {
     }
 });
 
