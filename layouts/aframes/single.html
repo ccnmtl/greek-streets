@@ -7,23 +7,28 @@
               integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
               crossorigin="anonymous" />
         <style type="text/css">
-        .a-enter-vr {
-            display: none;
-        }
+            .bi {
+                font-size: 2rem;
+            }
 
-        .gs-bottom-toolbar {
-            position: absolute;
-            left: 16px;
-            bottom: 16px;
-            width: 100%;
-        }
+            .a-enter-vr {
+                display: none;
+            }
 
-        .gs-right-toolbar {
-            position: absolute;
-            right: 16px;
-            top: 16px;
-        }
+            .gs-bottom-toolbar {
+                position: absolute;
+                left: 16px;
+                bottom: 16px;
+                width: 100%;
+            }
+
+            .gs-right-toolbar {
+                position: absolute;
+                right: 16px;
+                top: 16px;
+            }
         </style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
         <script src="https://aframe.io/releases/1.3.0/aframe.js"></script>
 
@@ -82,9 +87,7 @@
 
         <div class="gs-right-toolbar btn-group-vertical">
             <button class="btn btn-lg btn-dark" id="mute-button" name="mute" title="Mute">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-volume-mute" viewBox="0 0 16 16">
-                    <path d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06zM6 5.04 4.312 6.39A.5.5 0 0 1 4 6.5H2v3h2a.5.5 0 0 1 .312.11L6 10.96V5.04zm7.854.606a.5.5 0 0 1 0 .708L12.207 8l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 8 9.146 6.354a.5.5 0 1 1 .708-.708L11.5 7.293l1.646-1.647a.5.5 0 0 1 .708 0z"/>
-                </svg>
+                <i class="bi bi-volume-mute"></i>
             </button>
 
             <button class="btn btn-lg btn-dark" id="fullscreen-button" name="fullscreen" title="Enter fullscreen">

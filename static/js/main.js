@@ -86,6 +86,12 @@ AFRAME.registerSystem('video', {
                 resetCamera(camEl);
             });
 
+        document.getElementById('mute-button')
+            .addEventListener('click', function(e) {
+                const iconEl = e.target.querySelector('i') || e.target;
+                me.toggleVideoMute(iconEl);
+            });
+
         document.addEventListener('keydown', (e) => {
             if (e.code === 'Space') {
                 const activeVideo = me.getActiveVideo();
@@ -169,6 +175,24 @@ AFRAME.registerSystem('video', {
         if (video) {
             video.pause();
             this.state.playing = false;
+        }
+    },
+
+    toggleVideoMute: function(btn, video=null) {
+        if (!video) {
+            const activeVideo = this.getActiveVideo();
+            video = document.getElementById(activeVideo);
+        }
+
+        if (video) {
+            video.muted = !video.muted;
+
+            // Update the button icon
+            let cls = 'bi bi-volume-mute';
+            if (video.muted) {
+                cls = 'bi bi-volume-up';
+            }
+            btn.className = cls;
         }
     }
 });
