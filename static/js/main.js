@@ -1,15 +1,19 @@
 /* global AFRAME */
 
-const toggleFullscreen = function() {
+const toggleFullscreen = function(icon) {
     let elem = document.querySelector('#aframe-body');
+    let cls = 'bi bi-fullscreen';
 
     if (!document.fullscreenElement) {
+        cls = 'bi bi-fullscreen-exit';
         elem.requestFullscreen().catch(err => {
             alert(`Error attempting to enable fullscreen mode: ${err.message} (${err.name})`);
         });
     } else {
         document.exitFullscreen();
     }
+
+    icon.className = cls;
 };
 
 const resetCamera = function(cameraEl) {
@@ -76,8 +80,9 @@ AFRAME.registerSystem('video', {
             });
 
         document.getElementById('fullscreen-button')
-            .addEventListener('click', function() {
-                toggleFullscreen();
+            .addEventListener('click', function(e) {
+                const iconEl = e.target.querySelector('i') || e.target;
+                toggleFullscreen(iconEl);
             });
 
         document.getElementById('reset-button')
@@ -178,7 +183,7 @@ AFRAME.registerSystem('video', {
         }
     },
 
-    toggleVideoMute: function(btn, video=null) {
+    toggleVideoMute: function(icon, video=null) {
         if (!video) {
             const activeVideo = this.getActiveVideo();
             video = document.getElementById(activeVideo);
@@ -192,7 +197,7 @@ AFRAME.registerSystem('video', {
             if (video.muted) {
                 cls = 'bi bi-volume-up';
             }
-            btn.className = cls;
+            icon.className = cls;
         }
     }
 });
