@@ -62,8 +62,22 @@
                 {{ .Content }}
             </div>
 
+            <label for="share-url" class="form-label">
+                Share
+            </label>
+            <div class="input-group mb-3">
+                <input id="share-url"
+                       type="text" class="form-control"
+                       readonly value="{{ .Permalink }}" />
+                <button id="share-copy-button"
+                        class="btn btn-outline-secondary"
+                        type="button">
+                    Copy
+                </button>
+            </div>
+
             <div>
-                <h4>Tags:</h4>
+                <h5>Tags</h5>
                 <a href="#">test</a>, <a href="#">test2</a>
             </div>
 
@@ -71,4 +85,16 @@
         </div>
     </article>
 </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('share-copy-button')
+            .addEventListener('click', function(e) {
+                const copyText = document.getElementById('share-url');
+                copyText.select();
+                copyText.setSelectionRange(0, 99999);
+                navigator.clipboard.writeText(copyText.value);
+            });
+});
+</script>
 {{ end }}
