@@ -29,7 +29,6 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
         <script src="https://aframe.io/releases/1.3.0/aframe.js"></script>
-
         <script src="/js/main.js"></script>
 
                 <!-- Image link template to be reused. -->
@@ -48,9 +47,9 @@
     <body id="aframe-body">
         <a-scene
             video="activeVideo: mainVideo"
-            cursor="rayOrigin: mouse"
             raycaster="objects: [data-raycastable]"
             device-orientation-permission-ui="enabled: false">
+            <a-entity cursor="rayOrigin: mouse; mouseCursorStylesEnabled: false; fuse: false"></a-entity>
 
             <a-assets>
                 <video id="mainVideo" preload="auto"
@@ -81,7 +80,9 @@
 
             {{ range .Params.hotspots }}
             <a-entity
+                cursor-listener
                 id="hotspot-{{ .id }}"
+                class="raycastable"
                 position="{{ range .position }} {{.}} {{ end }}"
                 rotation="{{ range .rotation }} {{.}} {{ end }}">
                 <a-entity class="raycastable menu-button"
@@ -101,13 +102,6 @@
 
             <a-camera wasd-controls-enabled="false"
                       id="aframe-cam">
-                <a-entity material="shader: flat; src: #mainVideo"
-                          geometry="primitive: plane; width: 160; height: 90;"
-                          position="0 60 -250"
-                          rotation="0 35 0"
-                          play-on-click
-                          visible="false">
-                </a-entity>
                 <a-cursor></a-cursor>
             </a-camera>
         </a-scene>
@@ -156,6 +150,8 @@
                 </svg>
             </button>
         </div>
+
+        <div id="gs-modal" class="modal-dialog modal-lg">Test modal!</div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     </body>

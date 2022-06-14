@@ -247,3 +247,13 @@ window.addEventListener('mousewheel', function(event) {
     // set the camera element
     camEl.setAttribute('camera', mycam);
 }, {passive: false});
+
+AFRAME.registerComponent('cursor-listener', {
+    init: function () {
+        this.el.addEventListener('click', function () {
+            // TODO
+            //const myModal = new bootstrap.Modal(
+            //    document.getElementById('gs-modal'), {})
+        });
+    }
+});
