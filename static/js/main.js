@@ -51,7 +51,8 @@ AFRAME.registerSystem('video', {
     },
 
     state: {
-        playing: true
+        playing: true,
+        hotspotsVisible: true
     },
 
     init: function() {
@@ -95,6 +96,12 @@ AFRAME.registerSystem('video', {
             .addEventListener('click', function(e) {
                 const iconEl = e.target.querySelector('i') || e.target;
                 me.toggleVideoMute(iconEl);
+            });
+
+        document.getElementById('hide-button')
+            .addEventListener('click', function(e) {
+                const iconEl = e.target.querySelector('i') || e.target;
+                me.toggleHideHotspots(iconEl);
             });
 
         document.addEventListener('keydown', (e) => {
@@ -199,6 +206,25 @@ AFRAME.registerSystem('video', {
             }
             icon.className = cls;
         }
+    },
+
+    toggleHideHotspots: function(icon) {
+        this.state.hotspotsVisible = !this.state.hotspotsVisible;
+
+        const hotspots = document.querySelectorAll('.gs-hotspot');
+
+        const me = this;
+        hotspots.forEach(function(hotspot) {
+            hotspot.setAttribute('visible', me.state.hotspotsVisible);
+        });
+
+        // Update the button icon
+        let cls = 'bi bi-eye';
+        if (this.state.hotspotsVisible) {
+            cls = 'bi bi-eye-slash';
+        }
+
+        icon.className = cls;
     }
 });
 
