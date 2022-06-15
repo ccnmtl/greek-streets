@@ -51,7 +51,7 @@ AFRAME.registerSystem('video', {
     },
 
     state: {
-        playing: true,
+        playing: false,
         hotspotsVisible: true
     },
 
