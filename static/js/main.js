@@ -1,4 +1,4 @@
-/* global AFRAME */
+/* global AFRAME, bootstrap */
 
 const toggleFullscreen = function(icon) {
     let elem = document.querySelector('#aframe-body');
@@ -251,9 +251,11 @@ window.addEventListener('mousewheel', function(event) {
 AFRAME.registerComponent('cursor-listener', {
     init: function () {
         this.el.addEventListener('click', function () {
-            // TODO
-            //const myModal = new bootstrap.Modal(
-            //    document.getElementById('gs-modal'), {})
+            // TODO: make id dynamic
+            const id = 1;
+            const el = document.getElementById('gs-modal-' + id);
+            const myModal = new bootstrap.Modal(el);
+            myModal.show();
         });
     }
 });
