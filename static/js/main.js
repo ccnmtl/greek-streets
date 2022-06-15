@@ -1,4 +1,4 @@
-/* global AFRAME */
+/* global AFRAME, bootstrap */
 
 const toggleFullscreen = function(icon) {
     let elem = document.querySelector('#aframe-body');
@@ -247,3 +247,15 @@ window.addEventListener('mousewheel', function(event) {
     // set the camera element
     camEl.setAttribute('camera', mycam);
 }, {passive: false});
+
+AFRAME.registerComponent('cursor-listener', {
+    init: function () {
+        this.el.addEventListener('click', function () {
+            // TODO: make id dynamic
+            const id = 1;
+            const el = document.getElementById('gs-modal-' + id);
+            const myModal = new bootstrap.Modal(el);
+            myModal.show();
+        });
+    }
+});
