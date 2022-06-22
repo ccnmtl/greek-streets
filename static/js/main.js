@@ -1,5 +1,9 @@
 /* global AFRAME, bootstrap */
 
+const state = {
+    hotspotsVisible: true
+};
+
 const toggleFullscreen = function(icon) {
     let elem = document.querySelector('#aframe-body');
     let cls = 'bi bi-fullscreen';
@@ -51,8 +55,7 @@ AFRAME.registerSystem('video', {
     },
 
     state: {
-        playing: false,
-        hotspotsVisible: true
+        playing: false
     },
 
     init: function() {
@@ -209,18 +212,17 @@ AFRAME.registerSystem('video', {
     },
 
     toggleHideHotspots: function(icon) {
-        this.state.hotspotsVisible = !this.state.hotspotsVisible;
+        state.hotspotsVisible = !state.hotspotsVisible;
 
         const hotspots = document.querySelectorAll('.gs-hotspot');
 
-        const me = this;
         hotspots.forEach(function(hotspot) {
-            hotspot.setAttribute('visible', me.state.hotspotsVisible);
+            hotspot.setAttribute('visible', state.hotspotsVisible);
         });
 
         // Update the button icon
         let cls = 'bi bi-eye';
-        if (this.state.hotspotsVisible) {
+        if (state.hotspotsVisible) {
             cls = 'bi bi-eye-slash';
         }
 
@@ -277,6 +279,10 @@ window.addEventListener('mousewheel', function(event) {
 AFRAME.registerComponent('cursor-listener', {
     init: function () {
         this.el.addEventListener('click', function () {
+            if (!state.hotspotsVisible) {
+                return;
+            }
+
             // TODO: make id dynamic
             const id = 1;
             const el = document.getElementById('gs-modal-' + id);
