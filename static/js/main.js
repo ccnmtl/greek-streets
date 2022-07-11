@@ -289,5 +289,21 @@ AFRAME.registerComponent('cursor-listener', {
             const myModal = new bootstrap.Modal(el);
             myModal.show();
         });
+
+        this.el.addEventListener('mouseenter', function () {
+            if (!state.hotspotsVisible) {
+                return;
+            }
+
+            // TODO
+        });
+
+        this.el.addEventListener('mouseleave', function () {
+            if (!state.hotspotsVisible) {
+                return;
+            }
+
+            // TODO
+        });
     }
 });

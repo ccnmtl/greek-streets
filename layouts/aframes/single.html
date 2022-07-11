@@ -78,8 +78,17 @@
                 visible="true"
                 position="{{ range .position }} {{.}} {{ end }}"
                 rotation="{{ range .rotation }} {{.}} {{ end }}">
-                <a-entity class="raycastable menu-button"
-                          mixin="frame">
+
+                <a-entity
+                    position="0 3 0"
+                    geometry="primitive: plane; width: 8; height: auto"
+                    material="color: #000000"
+                    text="color: white; align: center;
+                              wrap-count: 10;
+                              value: {{ .title }}">
+                </a-entity>
+
+                <a-entity class="menu-button" mixin="frame">
                     <a-entity
                         material="src: #hotspot-icon;"
                         mixin="poster">

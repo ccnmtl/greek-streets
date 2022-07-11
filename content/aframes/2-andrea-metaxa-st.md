@@ -5,13 +5,16 @@ slug: "2-andrea-metaxa-st"
 vidSrc: "https://d2b5j58ir6uajk.cloudfront.net/transcoded-videos/2%20Andrea%20Metaxa%20ST-.mp4"
 hotspots:
   - id: 1
+    title: "Test title 1"
     src: /helen_boelek.jpeg
     position: [-10, 8.5, 7.5]
     rotation: [0, 79, 0]
   - id: 2
+    title: "Test title 2"
     position: [11, 6, 7]
     rotation: [0, 270, 0]
   - id: 3
+    title: "Test title 3"
     position: [-16, 0.25, -16]
     rotation: [0, 90, 0]
 ---
