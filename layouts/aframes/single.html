@@ -5,6 +5,13 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
         <style type="text/css">
+            #gs-logo {
+                position: absolute;
+                left: 10px;
+                top: 20px;
+                z-index: 9;
+            }
+
             .bi {
                 font-size: 2rem;
             }
@@ -45,6 +52,9 @@
     </head>
 
     <body id="aframe-body">
+
+        <img width="220" height="80" id="gs-logo" src="/logo-test.svg" />
+
         <a-scene
             video="activeVideo: mainVideo"
             raycaster="objects: [data-raycastable]"
