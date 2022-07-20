@@ -73,14 +73,9 @@ AFRAME.registerSystem('video', {
 
         // Attach to the video UI button events. Note that these are
         // outside of the <a-scene>.
-        document.getElementById('play-button')
+        document.getElementById('play-pause-button')
             .addEventListener('click', function() {
-                me.playVideo();
-            });
-
-        document.getElementById('pause-button')
-            .addEventListener('click', function() {
-                me.pauseVideo();
+                me.playPauseVideo();
             });
 
         document.getElementById('fullscreen-button')
@@ -116,6 +111,8 @@ AFRAME.registerSystem('video', {
                 } else {
                     me.playVideo(video);
                 }
+
+                me.togglePlayPauseButton(me.state.playing);
             }
         });
 
@@ -159,6 +156,27 @@ AFRAME.registerSystem('video', {
                 videoEl.pause();
             }
         }
+    },
+
+    togglePlayPauseButton: function(isPlaying) {
+        const btn = document.getElementById('play-pause-button');
+        const icon = btn.querySelector('i');
+
+        let cls = 'bi bi-play';
+        if (isPlaying) {
+            cls = 'bi bi-pause';
+        }
+        icon.className = cls;
+    },
+
+    playPauseVideo: function() {
+        if (!this.state.playing) {
+            this.playVideo();
+        } else {
+            this.pauseVideo();
+        }
+
+        this.togglePlayPauseButton(this.state.playing);
     },
 
     // play active video
