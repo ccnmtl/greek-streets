@@ -20,6 +20,9 @@
         iframe.gs-aframe {
             overscroll-behavior: contain;
         }
+        .footer__logo {
+            max-width: 22rem;
+        }
         </style>
     </head>
     <body>
@@ -28,8 +31,6 @@
         {{ block "main" . }}
         <!-- The part of the page that begins to differ between templates -->
         {{ end }}
-        {{ block "footer" . }}
-        <!-- More shared code, perhaps a footer but that can be overridden if need be in  -->
-        {{ end }}
+        {{ partial "footer.html" . }}
     </body>
 </html>
