@@ -20,6 +20,14 @@ const toggleFullscreen = function(icon) {
     icon.className = cls;
 };
 
+/**
+ * Format seconds to mm:ss format.
+ * https://stackoverflow.com/a/1322771/173630
+ */
+const formatTime = function(seconds) {
+    return new Date(seconds * 1000).toISOString().substring(14, 19);
+};
+
 const resetCamera = function(cameraEl) {
     // https://www.demo2s.com/javascript/javascript-a-frame-orientation-with-initial-camera-rotation.html
     const lookControls = cameraEl.components['look-controls'];
@@ -55,7 +63,9 @@ AFRAME.registerSystem('video', {
     },
 
     state: {
-        playing: false
+        playing: false,
+        duration: null,
+        currentTime: 0
     },
 
     init: function() {
@@ -116,10 +126,22 @@ AFRAME.registerSystem('video', {
             }
         });
 
-        const video = document.querySelector('video');
+        const video = document.querySelector('#mainVideo');
         const input = document.querySelector('input#gs-video-range');
 
         setupVideoTimeline(video, input);
+
+        video.addEventListener('loadedmetadata', (e) => {
+            me.state.duration = e.target.duration;
+            document.querySelector('#gs-duration').innerHTML =
+                formatTime(me.state.duration);
+        });
+
+        video.addEventListener('timeupdate', (e) => {
+            me.state.currentTime = e.target.currentTime;
+            document.querySelector('#gs-currenttime').innerHTML =
+                formatTime(me.state.currentTime);
+        });
     },
 
     getActiveVideo: function() {

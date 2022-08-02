@@ -125,13 +125,19 @@
         <div class="gs-bottom-toolbar">
             <div class="row align-items-center">
                 <div class="col-4">
+                    
                 </div>
                 <div class="col-4 text-center">
-                    <button class="btn btn-lg btn-dark"
-                            id="play-pause-button"
-                            name="play" title="Play">
-                        <i class="bi bi-play"></i>
-                    </button>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <button class="btn btn-lg btn-dark"
+                                id="play-pause-button"
+                                name="play" title="Play">
+                            <i class="bi bi-play"></i>
+                        </button>
+                        <div class="gs-timecode text-light bg-dark p-1 ms-2 rounded">
+                            <span id="gs-currenttime">00:00</span> / <span id="gs-duration">00:00</span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row align-items-center">
