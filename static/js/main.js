@@ -1,7 +1,7 @@
 /* global AFRAME, bootstrap */
 
 const state = {
-    hotspotsVisible: true
+    hotspotsVisible: false
 };
 
 const toggleFullscreen = function(icon) {
