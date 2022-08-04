@@ -114,6 +114,16 @@ AFRAME.registerSystem('video', {
                 me.refreshHotspots(iconEl, state.hotspotsVisible);
             });
 
+        document.getElementById('zoom-in-button')
+            .addEventListener('click', function() {
+                me.zoom('in');
+            });
+
+        document.getElementById('zoom-out-button')
+            .addEventListener('click', function() {
+                me.zoom('out');
+            });
+
         document.addEventListener('keydown', (e) => {
             if (e.code === 'Space') {
                 const activeVideo = me.getActiveVideo();
@@ -148,6 +158,28 @@ AFRAME.registerSystem('video', {
         const hideIcon = document.getElementById('hide-button');
         const iconEl = hideIcon.querySelector('i') || hideIcon;
         this.refreshHotspots(iconEl, state.hotspotsVisible);
+    },
+
+    zoom: function(direction='in') {
+        const delta = direction === 'in' ? 1 : -1;
+        const camEl = document.getElementById('aframe-cam');
+        const mycam = camEl.getAttribute('camera');
+
+        if (!mycam) {
+            return;
+        }
+
+        let finalZoom = mycam.zoom + delta;
+        // limit the zoom so it doesnt zoom too much in or out
+        if (finalZoom < 1) {
+            finalZoom = 1;
+        } else if (finalZoom > 5) {
+            finalZoom = 5;
+        }
+
+        mycam.zoom = finalZoom;
+        // set the camera element
+        camEl.setAttribute('camera', mycam);
     },
 
     getActiveVideo: function() {
@@ -287,38 +319,6 @@ AFRAME.registerComponent('video', {
     update: function () {
     }
 });
-
-// https://stackoverflow.com/a/53009978/173630
-window.addEventListener('mousewheel', function(event) {
-    event.preventDefault();
-    event.stopPropagation();
-
-    const delta = Math.sign(event.wheelDelta);
-    const camEl = document.getElementById('aframe-cam');
-    if (!camEl) {
-        return;
-    }
-
-    // get the mouse wheel change (120 or -120 and normalizing it to 1
-    // or -1)
-    const mycam = camEl.getAttribute('camera');
-    if (!mycam) {
-        return;
-    }
-
-    let finalZoom = mycam.zoom + delta;
-
-    // limit the zoom so it doesnt zoom too much in or out
-    if (finalZoom < 1) {
-        finalZoom = 1;
-    } else if (finalZoom > 5) {
-        finalZoom = 5;
-    }
-
-    mycam.zoom = finalZoom;
-    // set the camera element
-    camEl.setAttribute('camera', mycam);
-}, {passive: false});
 
 AFRAME.registerComponent('cursor-listener', {
     init: function () {
