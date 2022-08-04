@@ -35,6 +35,13 @@ const resetCamera = function(cameraEl) {
     lookControls.pitchObject.rotation.y = 0;
     lookControls.yawObject.rotation.x = 0;
     lookControls.yawObject.rotation.y = 0;
+
+    const camEl = document.getElementById('aframe-cam');
+    const mycam = camEl.getAttribute('camera');
+    if (mycam) {
+        mycam.zoom = 1;
+        camEl.setAttribute('camera', mycam);
+    }
 };
 
 const updateVideoTimeline = function(ratio, input) {
