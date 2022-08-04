@@ -88,8 +88,8 @@
             <a-entity
                 cursor-listener
                 id="hotspot-{{ .id }}"
-                data-id="{{ .id }}"
-                class="gs-hotspot raycastable"
+                data-id="{{ .id }}"                
+                class="gs-hotspot raycastable {{ with .movement }}gs-moving{{ end }}"
                 visible="true"
                 position="{{ range .position }} {{.}} {{ end }}"
                 rotation="{{ range .rotation }} {{.}} {{ end }}">

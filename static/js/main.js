@@ -156,10 +156,24 @@ AFRAME.registerSystem('video', {
                 formatTime(me.state.duration);
         });
 
+        const movingHotspots = document.querySelectorAll('.gs-moving');
+        let previousTime = 0;
+
         video.addEventListener('timeupdate', (e) => {
             me.state.currentTime = e.target.currentTime;
             document.querySelector('#gs-currenttime').innerHTML =
                 formatTime(me.state.currentTime);
+
+            // On the time update event, move any hotspots that need
+            // to move
+            const movementFactor = 16;
+            const increment = (me.state.currentTime - previousTime)
+                  * movementFactor;
+            console.log('increment', increment);
+            movingHotspots.forEach((hotspot) => {
+                hotspot.object3D.position.z -= increment;
+            });
+            previousTime = me.state.currentTime;
         });
 
         const hideIcon = document.getElementById('hide-button');
