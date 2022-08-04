@@ -108,8 +108,10 @@ AFRAME.registerSystem('video', {
 
         document.getElementById('hide-button')
             .addEventListener('click', function(e) {
+                state.hotspotsVisible = !state.hotspotsVisible;
+
                 const iconEl = e.target.querySelector('i') || e.target;
-                me.toggleHideHotspots(iconEl);
+                me.refreshHotspots(iconEl, state.hotspotsVisible);
             });
 
         document.addEventListener('keydown', (e) => {
@@ -142,6 +144,10 @@ AFRAME.registerSystem('video', {
             document.querySelector('#gs-currenttime').innerHTML =
                 formatTime(me.state.currentTime);
         });
+
+        const hideIcon = document.getElementById('hide-button');
+        const iconEl = hideIcon.querySelector('i') || hideIcon;
+        this.refreshHotspots(iconEl, state.hotspotsVisible);
     },
 
     getActiveVideo: function() {
@@ -251,18 +257,16 @@ AFRAME.registerSystem('video', {
         }
     },
 
-    toggleHideHotspots: function(icon) {
-        state.hotspotsVisible = !state.hotspotsVisible;
-
+    refreshHotspots: function(icon, show) {
         const hotspots = document.querySelectorAll('.gs-hotspot');
 
         hotspots.forEach(function(hotspot) {
-            hotspot.setAttribute('visible', state.hotspotsVisible);
+            hotspot.setAttribute('visible', show);
         });
 
         // Update the button icon
         let cls = 'bi bi-eye';
-        if (state.hotspotsVisible) {
+        if (show) {
             cls = 'bi bi-eye-slash';
         }
 
