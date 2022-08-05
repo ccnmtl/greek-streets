@@ -322,13 +322,12 @@ AFRAME.registerComponent('video', {
 
 AFRAME.registerComponent('cursor-listener', {
     init: function () {
-        this.el.addEventListener('click', function () {
+        this.el.addEventListener('click', function (e) {
             if (!state.hotspotsVisible) {
                 return;
             }
-
-            // TODO: make id dynamic
-            const id = 1;
+            const hotspot = e.target.closest('.gs-hotspot');
+            const id = hotspot.dataset.id;
             const el = document.getElementById('gs-modal-' + id);
             const myModal = new bootstrap.Modal(el);
             myModal.show();
