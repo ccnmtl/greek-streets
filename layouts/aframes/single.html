@@ -88,17 +88,18 @@
             <a-entity
                 cursor-listener
                 id="hotspot-{{ .id }}"
+                data-id="{{ .id }}"
                 class="gs-hotspot raycastable"
                 visible="true"
                 position="{{ range .position }} {{.}} {{ end }}"
                 rotation="{{ range .rotation }} {{.}} {{ end }}">
 
                 <a-entity
-                    position="0 3 0"
-                    geometry="primitive: plane; width: 8; height: auto"
+                    position="0 2 0"
+                    geometry="primitive: plane; width: 7; height: auto"
                     material="color: #000000"
                     text="color: white; align: center;
-                              wrap-count: 10;
+                              wrap-count: 20;
                               value: {{ .title }}">
                 </a-entity>
 
@@ -184,7 +185,7 @@
             <div class="modal-dialog modal-lg modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
+                        <h5 class="modal-title">{{ .title }}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
