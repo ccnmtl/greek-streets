@@ -1,4 +1,4 @@
-/* global AFRAME, bootstrap */
+/* global AFRAME, bootstrap, GS_HOTSPOTS */
 
 const state = {
     hotspotsVisible: false
@@ -59,6 +59,38 @@ const setupVideoTimeline = function(videoEl, inputEl) {
         const currentTime = (e.target.value / 100) * videoEl.duration;
         videoEl.currentTime = currentTime;
     };
+};
+
+/**
+ * Draw highlighted hotspot locations in time on the given canvas.
+ */
+const drawFlagCanvas = function(canvas, hotspots) {
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'red';
+
+    hotspots.forEach(function(timePos) {
+        const startPos = timePos.start * canvas.width;
+        const endPos = timePos.end * canvas.width;
+        const width = endPos - startPos;
+        ctx.fillRect(startPos, 0, width, 20);
+    });
+};
+
+const updateMovingHotspotDisplay = function(hotspots, currentTime, duration) {
+    const t = currentTime / duration;
+    hotspots.forEach(function(hotspot) {
+        const start = hotspot.dataset.start;
+        const end = hotspot.dataset.end;
+        if (!start || !end) {
+            return;
+        }
+
+        if (t >= start && t <= end) {
+            hotspot.object3D.visible = true;
+        } else {
+            hotspot.object3D.visible = false;
+        }
+    });
 };
 
 /**
@@ -154,17 +186,35 @@ AFRAME.registerSystem('video', {
             me.state.duration = e.target.duration;
             document.querySelector('#gs-duration').innerHTML =
                 formatTime(me.state.duration);
+
+            const canvas = document.getElementById('gs-hotspot-flags');
+            if (canvas) {
+                drawFlagCanvas(canvas, GS_HOTSPOTS, me.state.duration)
+            }
         });
 
+        const hotspotEntities = document.querySelectorAll('.gs-hotspot');
         video.addEventListener('timeupdate', (e) => {
             me.state.currentTime = e.target.currentTime;
             document.querySelector('#gs-currenttime').innerHTML =
                 formatTime(me.state.currentTime);
+
+            // If this is a moving scene, hide/show hotspots as
+            // necessary.
+            if (state.hotspotsVisible) {
+                updateMovingHotspotDisplay(
+                    hotspotEntities,
+                    e.target.currentTime, e.target.duration);
+            }
         });
 
         const hideIcon = document.getElementById('hide-button');
         const iconEl = hideIcon.querySelector('i') || hideIcon;
         this.refreshHotspots(iconEl, state.hotspotsVisible);
+
+        if (state.hotspotsVisible) {
+            updateMovingHotspotDisplay(hotspotEntities);
+        }
     },
 
     zoom: function(direction='in') {
