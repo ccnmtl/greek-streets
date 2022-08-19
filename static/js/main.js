@@ -1,4 +1,4 @@
-/* global AFRAME, bootstrap, GS_HOTSPOTS */
+/* global AFRAME, bootstrap, Viewer, GS_HOTSPOTS */
 
 const state = {
     hotspotsVisible: false
@@ -427,4 +427,23 @@ AFRAME.registerComponent('cursor-listener', {
             myModal.show();
         });
     }
+});
+
+window.addEventListener('DOMContentLoaded', function () {
+    // Modal viewer.js setup
+    document.querySelectorAll('.modal').forEach((modal) => {
+        let viewer;
+
+        modal.addEventListener('shown.bs.modal', () => {
+            const img = modal.querySelector('.viewer-image');
+            if (img) {
+                viewer = new Viewer(img);
+            }
+        });
+
+        modal.addEventListener('hidden.bs.modal', () => {
+            viewer.destroy()
+        });
+
+    });
 });
