@@ -76,20 +76,44 @@ const drawFlagCanvas = function(canvas, hotspots) {
     });
 };
 
-const updateMovingHotspotDisplay = function(hotspots, currentTime, duration) {
+/**
+ * Refresh a moving hotspot based on its optional `start` and `end`
+ * attributes.
+ *
+ * Returns visibility status.
+ */
+const refreshMovingHotspot = function(
+    hotspot, currentTimeRatio, hotspotsVisible
+) {
+    const start = hotspot.dataset.start;
+    const end = hotspot.dataset.end;
+
+    if (!hotspotsVisible) {
+        return false;
+    }
+
+    if (!start || !end) {
+        return true;
+    }
+
+    let visibility = false;
+
+    if (currentTimeRatio >= start && currentTimeRatio <= end) {
+        visibility = true;
+    }
+
+    hotspot.setAttribute('visible', visibility);
+    if (hotspot.object3D) {
+        hotspot.object3D.visible = visibility;
+    }
+    return visibility;
+};
+
+const updateMovingHotspotDisplay = function(
+    hotspots, currentTime, duration, hotspotsVisible) {
     const t = currentTime / duration;
     hotspots.forEach(function(hotspot) {
-        const start = hotspot.dataset.start;
-        const end = hotspot.dataset.end;
-        if (!start || !end) {
-            return;
-        }
-
-        if (t >= start && t <= end) {
-            hotspot.object3D.visible = true;
-        } else {
-            hotspot.object3D.visible = false;
-        }
+        refreshMovingHotspot(hotspot, t, hotspotsVisible);
     });
 };
 
@@ -150,7 +174,10 @@ AFRAME.registerSystem('video', {
                 state.hotspotsVisible = !state.hotspotsVisible;
 
                 const iconEl = e.target.querySelector('i') || e.target;
-                me.refreshHotspots(iconEl, state.hotspotsVisible);
+                me.refreshHotspots(
+                    iconEl, state.hotspotsVisible,
+                    me.state.currentTime, me.state.duration
+                );
             });
 
         document.getElementById('zoom-in-button')
@@ -204,17 +231,16 @@ AFRAME.registerSystem('video', {
             if (state.hotspotsVisible) {
                 updateMovingHotspotDisplay(
                     hotspotEntities,
-                    e.target.currentTime, e.target.duration);
+                    e.target.currentTime, e.target.duration,
+                    state.hotspotsVisible);
             }
         });
 
         const hideIcon = document.getElementById('hide-button');
         const iconEl = hideIcon.querySelector('i') || hideIcon;
-        this.refreshHotspots(iconEl, state.hotspotsVisible);
-
-        if (state.hotspotsVisible) {
-            updateMovingHotspotDisplay(hotspotEntities);
-        }
+        this.refreshHotspots(
+            iconEl, state.hotspotsVisible,
+            0, this.state.duration);
     },
 
     zoom: function(direction='in') {
@@ -346,11 +372,22 @@ AFRAME.registerSystem('video', {
         }
     },
 
-    refreshHotspots: function(icon, show) {
+    refreshHotspots: function(icon, show, currentTime, duration) {
         const hotspots = document.querySelectorAll('.gs-hotspot');
+        const t = currentTime / duration;
 
         hotspots.forEach(function(hotspot) {
-            hotspot.setAttribute('visible', show);
+            if (!show) {
+                hotspot.setAttribute('visible', false);
+                if (hotspot.object3D) {
+                    hotspot.object3D.visible = false;
+                }
+            } else if (refreshMovingHotspot(hotspot, t, show)) {
+                hotspot.setAttribute('visible', true);
+                if (hotspot.object3D) {
+                    hotspot.object3D.visible = true;
+                }
+            }
         });
 
         // Update the button icon
