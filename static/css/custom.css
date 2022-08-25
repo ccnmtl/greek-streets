@@ -1,0 +1,25 @@
+body {
+
+}
+
+.content {
+    background-color: #fff;
+}
+
+.front-img {
+    max-width: 800px;
+    max-height: 600px;
+}
+
+iframe.gs-aframe {
+    overscroll-behavior: contain;
+}
+
+.footer__logo {
+    max-width: 22rem;
+    padding: 8px;
+}
+
+.gs-footer {
+    background-color: rgb(21, 73, 153);
+}
