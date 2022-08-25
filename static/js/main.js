@@ -435,7 +435,7 @@ window.addEventListener('DOMContentLoaded', function () {
         let viewer;
 
         modal.addEventListener('shown.bs.modal', () => {
-            const img = modal.querySelector('.viewer-image');
+            const img = modal.querySelector('.viewerjs-gallery');
             if (img) {
                 viewer = new Viewer(img);
             }

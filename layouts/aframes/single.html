@@ -207,7 +207,7 @@
             </button>
         </div>
 
-        {{ range .Params.hotspots }}
+        {{ range $hotspot := .Params.hotspots }}
         <div class="modal fade" id="gs-modal-{{ .id}}" tabindex="-1"
              aria-labelledby="exampleModalLabel" aria-hidden="true">
 
@@ -218,12 +218,23 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        {{ if .src }}
+                        {{ if reflect.IsSlice .src }}
+
+                        <div class="text-center viewerjs-gallery">
+                            {{ range $idx, $src := .src }}
+                            <img src="{{ $src }}"
+                                 alt="Image {{ add $idx 1 }} for {{ $hotspot.title }}"
+                                 class="img-thumbnail mx-auto viewer-image" />
+                            {{ end }}
+                        </div>
+
+                        {{ else if .src }}
                         <div class="text-center">
                             <img src="{{ .src }}"
                                  alt="Image for {{ .title }}"
-                                 class="img-thumbnail mx-auto viewer-image" />
+                                 class="img-thumbnail mx-auto viewer-image viewerjs-gallery" />
                         </div>
+
                         {{ end }}
 
                         <p>
