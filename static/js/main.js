@@ -66,9 +66,14 @@ const setupVideoTimeline = function(videoEl, inputEl) {
  */
 const drawFlagCanvas = function(canvas, hotspots) {
     const ctx = canvas.getContext('2d');
-    ctx.fillStyle = 'red';
+    const colors = [
+        'rgba(255, 0, 0, 0.5)',
+        'rgba(0, 0, 255, 0.5)',
+    ];
 
-    hotspots.forEach(function(timePos) {
+    hotspots.forEach(function(timePos, i) {
+        const idx = i % colors.length;
+        ctx.fillStyle = colors[idx];
         const startPos = timePos.start * canvas.width;
         const endPos = timePos.end * canvas.width;
         const width = endPos - startPos;
