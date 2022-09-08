@@ -1,6 +1,12 @@
 {{ define "main" }}
 <main class="container" id="maincontent" aria-label="List of latest and recent articles">
-        <h1>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">Street Index</li>
+        </ol>
+    </nav>
+
+    <h1>
         Street Index
     </h1>
     <p class="lead">
@@ -22,7 +28,8 @@
     </p>
 
     <div class="ratio ratio-16x9">
-        <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50310.55761023317!2d23.703320098455922!3d37.990899652944734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1bd1f067043f1%3A0x2736354576668ddd!2sAthens%2C%20Greece!5e0!3m2!1sen!2sus!4v1660658965810!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe class="map" src="https://www.google.com/maps/d/u/2/embed?mid=1o_mqda3CrvsRJ1M1y7iaVJbQwRPhVDU&ehbc=2E312F" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
     </div>
 
     <h2>
@@ -36,7 +43,7 @@
 
             <ul class="list-group">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <a href="exarcheia.html">All Exarcheia Streets</a>
+                    <a href="/neighborhoods/exarcheia/">All Exarcheia Streets</a>
                     <span class="badge bg-secondary rounded-pill">5</span>
                 </li>
                 <li class="list-group-item">
@@ -66,7 +73,7 @@
             </h3>
             <ul class="list-group">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    All Kolonaki Streets
+                    <a href="/neighborhoods/kolonaki/">All Kolonaki Streets</a>
                     <span class="badge bg-secondary rounded-pill">5</span>
                 </li>
                 <li class="list-group-item">Street Name</li>
@@ -82,7 +89,7 @@
             </h3>
             <ul class="list-group">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    All Thiseio Streets
+                    <a href="/neighborhoods/thiseio/">All Thiseio Streets</a>
                     <span class="badge bg-secondary rounded-pill">5</span>
                 </li>
                 <li class="list-group-item">Street Name</li>

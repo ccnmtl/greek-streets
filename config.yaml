@@ -3,6 +3,10 @@ copyright: "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Internatio
 languageCode: "en-us"
 metaDataFormat: "yaml"
 title: "Hellenic Streets"
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
 
 menu:
   main:
