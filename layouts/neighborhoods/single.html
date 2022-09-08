@@ -1,0 +1,53 @@
+{{ define "title" }}
+{{ .Title }} &ndash; {{ .Site.Title }}
+{{ end }}
+
+{{ define "main" }}
+<main class="container" id="maincontent">
+    {{ partial "breadcrumbs.html" . }}
+
+    <article class="row entry-body">
+        <header class="col-lg-10 entry-header">
+            {{ if .Params.poster }}
+            <figure aria-label="PosterImage" role="group">
+                <img src="{{ .Site.BaseURL }}img/assets/{{ .Params.poster }}" class="img-fluid" alt="Poster image for this article" />
+                {{ if .Params.poster_source }}
+                <figcaption class="poster-source">
+                    <span class="img-attr">Source:
+                        {{ if .Params.poster_sourceurl }}
+                        <a href="{{ .Params.poster_sourceurl }}" target="_blank" rel="noopener noreferrer">{{ .Params.poster_source }}</a>
+                        {{ else }}
+                        {{ .Params.poster_source }}
+                        {{ end }}
+                    </span>
+                </figcaption>
+                {{ end }}
+            </figure>
+            {{ end }}
+            <h1 class="entry-title" itemprop="headline">
+                {{ .Title }}
+            </h1>
+            <p class="lead">
+                Brief but important text about this screen goes here.
+            </p>
+        </header>
+
+
+        <h2>About This Neighborhood</h2>
+        <div class="col-md-6 entry-content-col">
+            <div class="entry-content">
+                {{ .Content }}
+            </div>
+
+            <p class="d-none d-print-block article-url-print">Printed from: {{ .Permalink }}</p>
+        </div>
+        {{ if .Params.mapSrc }}
+        <div class="col-md-6">
+            <div class="ratio ratio-1x1">
+                <iframe class="map" src="{{ .Params.mapSrc }}" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        {{ end }}
+    </article>
+</main>
+{{ end }}
