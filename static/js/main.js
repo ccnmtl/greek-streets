@@ -1,4 +1,4 @@
-/* global AFRAME, bootstrap, Viewer, GS_HOTSPOTS */
+/* global AFRAME, bootstrap, Viewer, GS_HOTSPOTS, formatTime */
 
 const state = {
     hotspotsVisible: false
@@ -18,14 +18,6 @@ const toggleFullscreen = function(icon) {
     }
 
     icon.className = cls;
-};
-
-/**
- * Format seconds to mm:ss format.
- * https://stackoverflow.com/a/1322771/173630
- */
-const formatTime = function(seconds) {
-    return new Date(seconds * 1000).toISOString().substring(14, 19);
 };
 
 const resetCamera = function(cameraEl) {
@@ -271,39 +263,12 @@ AFRAME.registerSystem('video', {
     },
 
     getActiveVideo: function() {
-        const videoEls = this.sceneEl.querySelectorAll(
-            'a-videosphere, [videosphere]');
-        for (let i = 0; i < videoEls.length; i++) {
-            let videoEl = videoEls[i];
-            if (videoEl && videoEl.components.video.data.active) {
-                return videoEl.components.video.data.src;
-            }
+        const videoEl = this.sceneEl.querySelector('#mainVideo-sphere');
+        if (videoEl) {
+            return videoEl.components.video.data.src;
         }
 
         return null;
-    },
-
-    /**
-     * Set active video/videosphere.
-     * Stops and hides all other videos in the scene.
-     */
-    setActiveVideo: function(activeVideoSrc) {
-        const videoEls = this.sceneEl.querySelectorAll(
-            'a-videosphere, [videosphere]');
-        for (let i = 0; i < videoEls.length; i++) {
-            let videoEl = videoEls[i];
-
-            if (
-                videoEl &&
-                    videoEl.components.video &&
-                    videoEl.components.video.data.src === activeVideoSrc
-            ) {
-                videoEl.setAttribute('video', 'active', true);
-            } else {
-                videoEl.setAttribute('video', 'active', false);
-                videoEl.pause();
-            }
-        }
     },
 
     togglePlayPauseButton: function(isPlaying) {
@@ -410,8 +375,7 @@ AFRAME.registerSystem('video', {
  */
 AFRAME.registerComponent('video', {
     schema: {
-        src: {type: 'string', default: ''},
-        active: {type: 'boolean', default: false}
+        src: {type: 'string', default: ''}
     },
     init: function() {
     },
