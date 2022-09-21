@@ -28,12 +28,12 @@
     </p>
 
     <div class="ratio ratio-16x9 mb-2">
-        <iframe class="map" src="https://www.google.com/maps/d/u/2/embed?mid=1o_mqda3CrvsRJ1M1y7iaVJbQwRPhVDU&ehbc=2E312F" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
+        <div id="map" class="leaflet-container">
+        </div>
     </div>
 
     <h2>
-        Featured Neigborhoods
+        Featured Neighborhoods
     </h2>
 
     <div class="row">
@@ -102,4 +102,6 @@
         </div>
     </div>
 </main>
+
+<script src="/js/map.js"></script>
 {{ end }}
