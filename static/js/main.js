@@ -58,6 +58,11 @@ const setupVideoTimeline = function(videoEl, inputEl) {
  */
 const drawFlagCanvas = function(canvas, hotspots) {
     const ctx = canvas.getContext('2d');
+    if (!state.hotspotsVisible) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        return;
+    }
+
     const colors = [
         // red
         'rgba(255, 0, 0, 1)',
@@ -178,6 +183,11 @@ AFRAME.registerSystem('video', {
                     iconEl, state.hotspotsVisible,
                     me.state.currentTime, me.state.duration
                 );
+
+                const canvas = document.getElementById('gs-hotspot-flags');
+                if (canvas) {
+                    drawFlagCanvas(canvas, GS_HOTSPOTS, me.state.duration)
+                }
             });
 
         document.getElementById('zoom-in-button')
