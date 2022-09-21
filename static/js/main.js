@@ -59,17 +59,20 @@ const setupVideoTimeline = function(videoEl, inputEl) {
 const drawFlagCanvas = function(canvas, hotspots) {
     const ctx = canvas.getContext('2d');
     const colors = [
-        'rgba(255, 0, 0, 0.5)',
-        'rgba(0, 0, 255, 0.5)',
+        // red
+        'rgba(255, 0, 0, 1)',
+        // cyan
+        'rgba(0, 255, 255, 1)',
     ];
 
     hotspots.forEach(function(timePos, i) {
+        const isEven = i % 2 === 0;
         const idx = i % colors.length;
         ctx.fillStyle = colors[idx];
         const startPos = timePos.start * canvas.width;
         const endPos = timePos.end * canvas.width;
         const width = endPos - startPos;
-        ctx.fillRect(startPos, 0, width, 20);
+        ctx.fillRect(startPos, isEven ? 0 : 10, width, isEven ? 10 : 20);
     });
 };
 
