@@ -7,7 +7,7 @@ const streets = [
         "address": "Anexartisias 1 Athina 114 73, Greece",
         "neighborhood": "Exarcheia",
         "lat": 37.987170,
-        "lon": 23.738330
+        "lng": 23.738330
     },
     {
         "url": "https://hellenic-streets.ctl.columbia.edu/videos/1-ersis-st",
@@ -15,7 +15,7 @@ const streets = [
         "address": "Ersis 1 Athina 114 73, Greece",
         "neighborhood": "Exarcheia",
         "lat": 37.988430,
-        "lon": 23.737090
+        "lng": 23.737090
     },
     {
         "url": "https://hellenic-streets.ctl.columbia.edu/videos/1-klisovis-st",
@@ -23,7 +23,7 @@ const streets = [
         "address": "Klisovis 1 Athina 106 77, Greece",
         "neighborhood": "Exarcheia",
         "lat": 37.985130,
-        "lon": 23.732200
+        "lng": 23.732200
     },
     {
         "url": "https://hellenic-streets.ctl.columbia.edu/videos/1-satovriandou-st",
@@ -31,25 +31,31 @@ const streets = [
         "address": "Satovriandou 1 Athina 104 31, Greece",
         "neighborhood": "Exarcheia",
         "lat": 37.983813,
-        "lon": 23.729216
+        "lng": 23.729216
     },
     {
         "url": "https://hellenic-streets.ctl.columbia.edu/videos/1-solomou-st-8-solomou-st",
         "name": "1 Solomou Street - 8 Solomou Street",
         "address": "Solomou 1 Athina 106 83, Greece",
-        "neighborhood": "Exarcheia"
+        "neighborhood": "Exarcheia",
+        "lat": 37.9862986,
+        "lng": 23.7343067
     },
     {
         "url": "https://hellenic-streets.ctl.columbia.edu/videos/11-ioustinianou-st-iptarou-st",
         "name": "11 Ioustinianou Street (Iptarou Street)",
         "address": "Ioustinianou 11 Athina 114 73, Greece",
-        "neighborhood": "Exarcheia"
+        "neighborhood": "Exarcheia",
+        "lat": 37.9893819,
+        "lng": 23.7391061
     },
     {
         "url": "https://hellenic-streets.ctl.columbia.edu/videos/111-asklipiou-st",
         "name": "111 Asklipiou Street",
         "address": "Asklipiou 111 Athina 114 72, Greece",
-        "neighborhood": "Exarcheia"
+        "neighborhood": "Exarcheia",
+        "lat": 37.98561,
+        "lng": 23.74219
     },
     {
         "url": "https://hellenic-streets.ctl.columbia.edu/videos/116-emmanouil-benaki-st",
@@ -449,13 +455,13 @@ window.addEventListener('DOMContentLoaded', function () {
     }).addTo(map);
 
     streets.forEach(function(d) {
-        if (d.lat && d.lon) {
-            const marker = L.marker([d.lat, d.lon], {
+        if (d.lat && d.lng) {
+            const marker = L.marker([d.lat, d.lng], {
                 title: d.name,
                 alt: d.name
             });
             marker.addTo(map);
-            marker.bindPopup(d.name);
+            marker.bindPopup(`<a href="${d.url}">${d.name}</a>`);
         }
     });
 });
