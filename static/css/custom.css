@@ -48,3 +48,7 @@ iframe.gs-aframe {
 .gs-footer {
     background-color: rgb(21, 73, 153);
 }
+
+.leaflet-control-attribution {
+    display: none;
+}
