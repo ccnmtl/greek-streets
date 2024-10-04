@@ -1,5 +1,4 @@
-# hellenic-streets
-Hellenic, or Greek Streets
+# greek-streets
 
 ## Video encoding notes
 
